@@ -237,6 +237,9 @@ console.log('----------------------------------------');
 // let arithmeticOperator = '***';
 // let result;
 
+// не забываем пропроверку на typeof number:
+// if (typeof num1 === "number" && !isNaN(num1) && typeof num2 === "number" && !isNaN(num2))
+
 // switch (arithmeticOperator) {
 //     case '+':
 //         result = firstNumber + secondNumber
@@ -245,8 +248,12 @@ console.log('----------------------------------------');
 //         result = firstNumber - secondNumber
 //         break;
 //     case '/':
-//         result = firstNumber / secondNumber
-//         break;
+//         if (secondNumber === 0) {
+//             console.log('Division by 0 is not allowed!');
+//         } else {
+//             result = firstNumber / secondNumber
+//             break;
+//         }
 //     case '*':
 //         result = firstNumber * secondNumber
 //         break;
@@ -321,6 +328,43 @@ console.log('----------------------------------------');
 // Решите задачу с помощью пройденных тем (исключительно с помощью пройденных тем):
 // Улитка ползёт вверх по стене высотой 5 метров. Каждый день она проползает вверх на 3 метра, а каждую ночь съезжает вниз на 2 метра. 
 // За сколько дней она доползет до вершины стены.
+// let hight = 5;
+// let daySpead = 3;
+// let nigthSpead = 2
+// let result = 0;
+// let days = 0;
+
+// if (result >= hight) {
+//     console.log(`The snail crawled to the top in ${days} days`);
+// } else {
+//     result += daySpead //3
+//     days++ //1
+//     if (result >= hight) {
+//         console.log(`The snail crawled to the top in ${days} days`);
+//     } else {
+//         result -= nigthSpead //1
+//     }
+// }
+
+// if (result >= hight) {
+//     console.log(`The snail crawled to the top in ${days} days`);
+// } else {
+//     result += daySpead //4
+//     days++ //2
+//     if (result >= hight) {
+//         console.log(`The snail crawled to the top in ${days} days`);
+//     } else {
+//         result -= nigthSpead //2
+//     }
+// }
+
+// if (result >= hight) {
+//     console.log(`The snail crawled to the top in ${days} days`);
+// } else {
+//     result += daySpead //5
+//     days++ //2
+//     console.log(`The snail crawled to the top in ${days} days`);
+// }
 
 
 console.log('----------------------------------------');
@@ -333,7 +377,37 @@ console.log('----------------------------------------');
 // Выведите на экран название, затем рецепт выбранного кофе (используйте переменные для изменения рецепта и названия) и его стоимость (в зависимости от размера стаканчика). 
 // Компоненты кофе не влияют на стоимость.
 // Используйте подходящую комбинацию условий - if, else if, else - для решения задачи.
+let coffeeLatte = 'Latte'; // 'Latte'
+let coffeeRaf = 'Raf'; // 'Raf'
+let ingredients = ['milk', 'water', 'shugar', 'vanilla'];
+let cups = ['small', 'medium', 'large']
+let userCoffe = 'Raf';
+let userCup = 'large' //small, medium, large
 
+let smallCupPriceLatte = 1;
+let mediumCupPriceLatte = 2;
+let largeCupPriceLatte = 3;
+
+let smallCupPriceRaf = 4;
+let mediumCupPriceRaf = 5;
+let largeCupPriceRaf = 6;
+
+if (userCoffe === coffeeLatte && userCup == cups[0]) {
+    console.log(`The coffe is ${coffeeLatte}. The cup is ${cups[0]}. The price is ${smallCupPriceLatte} \$, ingridients: ${ingredients.slice(0, 3)}`);
+} else if (userCoffe === coffeeLatte && userCup === cups[1]) {
+    console.log(`The coffe is ${coffeeLatte}. The cup is ${cups[1]}. The price is ${mediumCupPriceLatte} \$, ingridients: ${ingredients[0, 3]}`);
+} else if (userCoffe === coffeeLatte && userCup === cups[2]) {
+    console.log(`The coffe is ${coffeeLatte}. The cup is ${cups[2]}. The price is ${largeCupPriceLatte} \$, ingridients: ${ingredients[0, 3]}`);
+} else if (userCoffe === coffeeRaf && userCup === cups[0]) {
+    console.log(`The coffe is ${coffeeLatte}. The cup is ${cups[2]}. The price is ${smallCupPriceRaf} \$, ingridients: ${ingredients}`);
+}else if (userCoffe === coffeeRaf && userCup === cups[1]) {
+    console.log(`The coffe is ${coffeeLatte}. The cup is ${cups[2]}. The price is ${mediumCupPriceRaf} \$, ingridients: ${ingredients}`);
+}else if (userCoffe === coffeeRaf && userCup === cups[2]) {
+    console.log(`The coffe is ${coffeeLatte}. The cup is ${cups[2]}. The price is ${largeCupPriceRaf} \$, ingridients: ${ingredients}`);
+}
+
+
+console.log('----------------------------------------');
 // Создайте программу, которая определяет, имеет ли человек право на определенное мероприятие, на основе нескольких критериев: 
 // возраста, статуса членства и посещения предыдущих мероприятий.
 // Критерии участия:
