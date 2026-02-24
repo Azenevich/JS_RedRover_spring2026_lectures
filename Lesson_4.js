@@ -357,8 +357,8 @@ const allAroundFruits = ["banana", "apple"];
 const summerFruits = ["watermelon"];
 const isSummer = true;
 
-const fruits = [ ...allAroundFruits, ...(isSummer ? summerFruits : [])];
-console.log(fruits);
+const fruitss = [ ...allAroundFruits, ...(isSummer ? summerFruits : [])];
+console.log(fruitss);
 
 // // ========== Пример 2. Создать массив из строки
 
