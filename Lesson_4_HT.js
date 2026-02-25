@@ -114,25 +114,46 @@ console.log(sum);
 
 // 5. При помощи цикла for выведите чётные числа от 2 до 10
 
+for (let i = 1; i <= 10; i++) {
+    console.log(i);
+    
+}
+
 // 6. Переделайте задачку с улиткой используя циклы
 // Улитка ползёт вверх по стене высотой 5 метров. Каждый день она проползает вверх на 3 метра, 
 // а каждую ночь съезжает вниз на 2 метра. 
 // За сколько дней она доползет до вершины стены.
 
+let hight = 5;
+let daySpead = 3;
+let nigthSpead = 2
+let result = 0; //1
+let days = 0; //1
+
+
+while (result < hight) {
+    result += daySpead
+    days += 1
+    if (result >= hight) {
+        console.log(`The snail crawled to the top in ${days} days`);
+    } else {
+        result -= nigthSpead
+    }
+}
+
+
 // 7. Есть код. Какой будет результат этого кода и почему
 
-// const numbers = [1, 2, 3, 4, 5];
-//     let sum = 0;
+const numbers = [1, 2, 3, 4, 5];
+let sumMy = 0;
 
-//     for (let i = 0; i < numbers.length; i++) {
-//         if (i % 2 !== 0) {
-//             sum += numbers[i];
-//         }
-//     }
-//     console.log(sum);
+for (let i = 0; i < numbers.length; i++) {
+    if (i % 2 !== 0) {  // проверка индекса, а не значения
+        sumMy += numbers[i];
+    }
+}
 
-
-
+console.log(sumMy);
 
 
 // 8. Нарисуйте ромб (подсказка: вложенные циклы)
@@ -142,7 +163,31 @@ console.log(sum);
 // *****
 //  ***
 //   *
+let symbol = '*';
+let empty = ' ';
 
+for (let i = 0; i < 3; i++) {   
+    let newStr = '';
+    for (let j = 0; j < 2 - i; j++) {
+        newStr += empty;
+    }
+    for (let k = 0; k < 2 * i + 1; k++) {
+        newStr += symbol;
+    }
+    console.log(newStr);
+}
+
+for (let i = 1; i >= 0; i--) {
+    let newStr = '';
+    for (let j = 0; j < 2 - i; j++) {
+        newStr += empty;
+    }
+    for (let k = 0; k < 2 * i + 1; k++) {
+        newStr += symbol;
+    }
+    console.log(newStr);
+}
+ 
 
 // 9. Нарисуйте прямоугольный треугольник
 
@@ -151,6 +196,8 @@ console.log(sum);
 // * * * * *
 // * * * * * * *
 // * * * * * * * * *
+let symbolNew = '* ';
+
 
 
 // 10. Нарисуйте треугольник с цифрами - лево
