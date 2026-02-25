@@ -198,7 +198,15 @@ for (let i = 1; i >= 0; i--) {
 // * * * * * * * * *
 let symbolNew = '* ';
 
+for (let i = 0; i < 5; i++) {   //1
+    let newString = ''; //'* * * '
+    for (let j = 0; j < 2 * i + 1; j++) { //3; 3<2*1+1=3;
+        newString += symbolNew; 
+        
+    }
+    console.log(newString);
 
+}
 
 // 10. Нарисуйте треугольник с цифрами - лево
 
@@ -212,6 +220,15 @@ let symbolNew = '* ';
 // 0 1 2
 // 0 1
 // 0
+let num = 0;
+for (let i = 10; i > num; i--) {
+    let string = '';
+    for (let j = 0; j < i; j++) {
+        string += j + " ";
+        
+    }
+    console.log(string);
+}
 
 
 // 11. Нарисуйте треугольник с цифрами - право
@@ -226,7 +243,19 @@ let symbolNew = '* ';
 //               0 1 2
 //                 0 1
 //                   0
-
+for (let i = 0; i < 10; i++) { //0
+    let string = ''; //' 0 '
+    for (let j = 0; j < i * 2; j++) {//0 ;0<0; ++
+        string += ' ';
+        
+    }
+    for (let k = 0; k < 10 - i; k++) {//1 1<10; ++
+        string += k + ' ';        
+    }
+    
+    console.log(string);
+    
+}
 
 // 12. Нарисуйте треугольник с цифрами - вниз
 
@@ -240,10 +269,27 @@ let symbolNew = '* ';
 //               2 1 0 1 2
 //                 1 0 1
 //                   0
+for (let i = 0; i < 10; i++) {  //1
+    let string = ''; //  '0 '
 
+    for (let l = 0; l < i * 2; l++) {
+        string += ' ';        
+    }
+
+    for (let j = 9 - i; j > 0; j--) { //1 ; 1 < 0
+        string += j + ' '; // 1 
+    }
+
+    for (let k = 0; k < 10-i; k++) { //1;  < 10
+        string += k + ' '; //0
+        
+    }
+
+    console.log(string);
+}
 
 // 13. Нарисуйте ромб из цифр (будьте внимательны!)
-//                1
+//          1
 //         121
 //        12321
 //       1234321
