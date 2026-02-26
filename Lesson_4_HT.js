@@ -308,6 +308,41 @@ for (let i = 0; i < 10; i++) {  //1
 //        12321
 //         121
 //          1
+for (let i = 1; i <= 10; i++) {
+    let string = '';
+
+    for (let j = 10; j > i; j--) { //10 ; 10 
+        string += ' ';
+        
+    }
+    for (let k = 1; k <= i; k++) {// 9
+        string += k % 10;
+        
+    }
+    for (let l = i - 1; l >= 1; l--) { //
+        string += l;
+    }
+    
+    console.log(string);
+}
+
+for (let i = 9; i >= 1; i--) {
+    let string = '';
+
+    for (let j = 10; j > i; j--) {
+        string += ' ';
+    }
+
+    for (let k = 1; k <= i; k++) {
+        string += k;
+    }
+
+    for (let l = i - 1; l >= 1; l--) {
+        string += l;
+    }
+
+    console.log(string);
+}
 
 // 14. Сложнее*: Нарисуйте горизонтальный треугольник из цифр
 
@@ -316,6 +351,18 @@ for (let i = 0; i < 10; i++) {  //1
 // 4 5 6
 // 7 8 9 10
 // 11 12 13 14 15
+let string = '';
+let newNum = 1;
+
+for (let i = 1; i < 5; i++) { //0
+    for (let j = 1; j <= i ; j++) { //1
+        string += newNum + ' ' 
+        newNum++
+    }
+    string += '\n';
+}
+
+console.log(string);
 
 
 // 15. Сложно, на смекалку: Нарисуйте вертикальный треугольник из цифр
@@ -326,6 +373,22 @@ for (let i = 0; i < 10; i++) {  //1
 // 4 8 11 13
 // 5 9 12 14 15
 
+let n = 5;
+let start = 1;
+
+for (let i = 1; i <= n; i++) {
+    let current = start;
+    let string = '';
+
+    for (let j = 1; j <= i; j++) {
+        string += current + ' ';
+        current += (n - j);
+    }
+
+    console.log(string);
+    start++;
+}
+
 // 16. Креативное задание 1*
 // Имеется зашифрованное предложение 
 
@@ -333,8 +396,16 @@ for (let i = 0; i < 10; i++) {  //1
 
 // Мы знаем, что оно означает “You are the best QA ever”.
 // Нам нужно придумать программу дешифратор.
-// Креативное задание 2* (посложнее)
+let encrypted = "Ybrobrubr brabrrbrebr brtbrhbrebr brbbrebrsbrtbr brQbrAbr brebrvbrebrrbr";
+let decrypted = encrypted.replaceAll("br", "");
+console.log(decrypted);
 
+//second solution
+let encryptedNew = "Ybrobrubr brabrrbrebr brtbrhbrebr brbbrebrsbrtbr brQbrAbr brebrvbrebrrbr";
+let decryptedNew = encryptedNew.replace(/br/g, "");
+console.log(decryptedNew);
+
+// Креативное задание 2* (посложнее)
 // Придумайте свой собственный шифр, а также программу, которая будет шифровать и затем дешифровщик к нему
 
 
