@@ -132,4 +132,74 @@ function Sum(a, b) {
 
 console.log(Sum(1, 3));
 
+// // вызов функции с присвоением к переменной
+function Sum(a, b) {
+    return a + b;
+}
+const sum = Sum(1, 2);
+console.log(sum);
+console.log(Sum(1, 2));
+
+// функция может быть внутри другой функции.
+// область видимости переменных -- > функция Inner() видна только внутри Outer()
+function Outer(){
+    function Inner() {
+        return 5;
+    }
+
+    return "hello-" + Inner();
+}
+
+console.log(Outer());
+
+// ================= рекурсивная функция (recursive function)
+// // функция вызывает сама себя
+// // таблица квадратов
+function squareIt (number) {
+//#region ...
+    if (number > 4294967296) { //при получении данного чила выйдет из функции, иначе будет вызывать сама себя постоянно и зависнет
+        return;
+    }
+//#endregion
+
+    console.log(number);
+    const square = number * number;
+
+    squareIt(square);
+}
+
+squareIt(2);
+
+
+//--------------------------------------------------------
+// в Javascript есть 2 способа создавать функцию:
+// - функциональное объявление (function declaration)
+// - функциональное выражение (function expression)
+
+// ====== 1. функциональное объявление (function declaration)
+// это когда мы создаем функцию декларируя/объявляя ее, давая ей имя и вызывая ее по имени
+// - у этой функции всегда есть имя
+// - может использоваться глобально или в рамках определенной области действия
+
+Print(); //сначала можем вызвать, потом создать - function hoisting
+
+function Print() {
+    console.log("Hello World");
+}
+
+Print(); 
+
+// в данном случаем, мы можем создавать функцию как показано до ее вызова, но и так же после
+// это называется "подъем функции (function hoisting)"
+// работает только с function declaration
+
+
+
+
+
+
+
+
+
+
 
