@@ -180,6 +180,17 @@ console.log(calculation(12, 'v', "+"));  // Both arguments must be valid numbers
 //     "Hallo wereld!"
 //     "Пpивeт мир!"
 
+function getGreetings() {
+    let arrayOfGreetings = ["Hello world!", "!Hola mundo!", "Hallo wereld!", "Пpивeт мир!"]
+
+    return arrayOfGreetings
+}
+
+console.log(getGreetings());
+
+const greetings = () => ["Hello world!", "!Hola mundo!", "Hallo wereld!", "Пpивeт мир!"]
+console.log(greetings()); // переменная, но вызываем с () так как в ней функция
+
 // Создать декларируемую функцию (function Declaration), функцию выражение (function Expression) и стрелочную функцию.
 
 // 8.	Заполнить остаток таблички методов массивов
