@@ -210,20 +210,54 @@ console.log(sumTwoNumbers(2, 4));
 
 // 9.	Какой метод был использован в данном коде (на месте *****), чтобы перевести метры в футы и почему?  
 
-// const distanceInMeters = [2, 5, 13, 44, 100];
+const distanceInMeters = [2, 5, 13, 44, 100];
 
-// const distanceInFeet = distanceInMeters.******(function(i) {
-//      return Math.round(i * 3.28084);
-// });
+const distanceInFeet = distanceInMeters.map(function(i) {
+     return Math.round(i * 3.28084);
+});
 
-// console.log(distanceInFeet);    // Вывод: [ 7, 16, 43, 144, 328 ]
+console.log(distanceInFeet);    // Вывод: [ 7, 16, 43, 144, 328 ]
 
 // 10.	Внедрите в свой код с Кофе (из дз 3, задача 11), как минимум 2 функции (на ваше усмотрение) и вызовите их в коде.
+let coffeeLatte = 'Latte'; // 'Latte'
+let coffeeRaf = 'Raf'; // 'Raf'
+let ingredients = ['milk', 'water', 'shugar', 'vanilla'];
+let cups = ['small', 'medium', 'large']
+
+
+let smallCupPriceLatte = 1;
+let mediumCupPriceLatte = 2;
+let largeCupPriceLatte = 3;
+
+let smallCupPriceRaf = 4;
+let mediumCupPriceRaf = 5;
+let largeCupPriceRaf = 6;
+
+function selectCoffe(coffeType, coffeCup) {
+  if (coffeType === coffeeLatte && coffeCup == cups[0]) {
+    return `The coffe is ${coffeType}. The cup is ${cups[0]}. The price is ${smallCupPriceLatte} \$, ingridients: ${ingredients.slice(0, 3).join(', ')}`;
+  } else if (coffeType === coffeeLatte && coffeCup === cups[1]) {
+    return `The coffe is ${coffeType}. The cup is ${cups[1]}. The price is ${mediumCupPriceLatte} \$, ingridients: ${ingredients.slice(0, 3).join(', ')}`;
+  } else if (coffeType === coffeeLatte && coffeCup === cups[2]) {
+    return `The coffe is ${coffeType}. The cup is ${cups[2]}. The price is ${largeCupPriceLatte} \$, ingridients: ${ingredients.slice(0, 3).join(', ')}`;
+  } else if (coffeType === coffeeRaf && coffeCup === cups[0]) {
+    return `The coffe is ${coffeType}. The cup is ${cups[0]}. The price is ${smallCupPriceRaf} \$, ingridients: ${ingredients.join(', ')}`;
+  } else if (coffeType === coffeeRaf && coffeCup === cups[1]) {
+    return `The coffe is ${coffeType}. The cup is ${cups[1]}. The price is ${mediumCupPriceRaf} \$, ingridients: ${ingredients.join(', ')}`;
+  } else if (coffeType === coffeeRaf && coffeCup === cups[2]) {
+    return `The coffe is ${coffeType}. The cup is ${cups[2]}. The price is ${largeCupPriceRaf} \$, ingridients: ${ingredients.join(', ')}`;
+  }
+}
+
+console.log(selectCoffe('Latte', 'medium'));
+
 
 // 11.	Переделайте задачку с улиткой используя функции (подсказка - используем вложенные функции)
-// Улитка ползёт вверх по стене высотой 5 метров. Каждый день она проползает вверх на 3 метра, а каждую ночь съезжает вниз на 2 метра. За сколько дней она доползет до вершины стены.
+// Улитка ползёт вверх по стене высотой 5 метров. Каждый день она проползает вверх на 3 метра, а каждую ночь съезжает вниз на 2 метра. 
+// За сколько дней она доползет до вершины стены.
 
-// 12.	Напишите функцию, которая принимает массив чисел как параметр и возвращает сумму всех чисел этого массива. Если элемент массива не число, пропускаем этот элемент
+// 12.	Напишите функцию, которая принимает массив чисел как параметр и возвращает сумму всех чисел этого массива. 
+// Если элемент массива не число, пропускаем этот элемент
 
 // 13.	Напишите функцию, которая принимает массива строк как параметр и возвращает строки длиннее 5 букв.
 
