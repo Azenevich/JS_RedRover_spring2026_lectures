@@ -102,15 +102,75 @@ console.log(add(2, 3));    // Выведет 5
 
 
 // 5.	Напишите функцию, которая выводит в консоль индивидуальное приветствие с именем, которое вы передаете в функцию
+function greetingNew(name) {
+    let greetingForUser = `Hello dear user ${name}`;
+    if (name == undefined) {
+        greetingForUser = 'Hello ghost';
+        return greetingForUser
+    }
+    return greetingForUser
+}
 
+console.log(greetingNew());
 
-// 6.	Напишите функцию с калькулятором (можно использовать код с предыдущей домашней работы), в которую, в качестве параметров, передаются три переменные, две - числовые и третья отвечает за знак арифметической операции (*, /, -, +). Проверьте работу функции.
+// 6.	Напишите функцию с калькулятором (можно использовать код с предыдущей домашней работы), в которую, 
+// в качестве параметров, передаются три переменные, две - числовые и третья отвечает за знак арифметической операции (*, /, -, +). 
+// Проверьте работу функции.
 
 // Пример:  
 // function calculate(a, b, operator)
 // {
 //    //code
 // }
+
+function calculation(firstNumber, secondNumber, operator) {
+  if (
+    typeof firstNumber !== "number" || isNaN(firstNumber) ||
+    typeof secondNumber !== "number" || isNaN(secondNumber)
+  ) {
+    return "Both arguments must be valid numbers";
+  }
+
+  let result;
+
+  switch (operator) {
+    case "+":
+      result = firstNumber + secondNumber;
+      break;
+
+    case "-":
+      result = firstNumber - secondNumber;
+      break;
+
+    case "*":
+      result = firstNumber * secondNumber;
+      break;
+
+    case "/":
+      if (secondNumber === 0) {
+        return "Division by 0 is not allowed!";
+      }
+      result = firstNumber / secondNumber;
+      break;
+
+    case "%":
+      result = firstNumber % secondNumber;
+      break;
+
+    case "**":
+      result = firstNumber ** secondNumber;
+      break;
+
+    default:
+      return "Enter a valid operator: +, -, /, *, %, **";
+  }
+
+  return result;
+}
+
+console.log(calculation(12, 2, "+"));  // 14
+console.log(calculation(12, 0, "/"));  // Division by 0 is not allowed!
+console.log(calculation(12, 'v', "+"));  // Both arguments must be valid numbers
 
 
 // 7.	Создать функцию getGreetings, возвращающую массив, содержащий строки "Hello, World" на разных языках.
