@@ -399,4 +399,114 @@ const fabrenheitTemperature = celsiusTemperfure.map((celsius) => {
 console.log(fabrenheitTemperature);
 
 
+//=========== optional parameters
+
+const res = arr.map((item, index, array) => {
+    return ""
+});
+
+// item - элемент массива
+// index - индекс элемента массива
+// array - изначальный массив, до того как мы начали с ним работать (arr, в нашем случае)
+
+
+const arr4 = [1, 2, 3, 4, 5];
+
+// // задача: умножить каждый элемент массива на 2 КРОМЕ 3-го
+
+const newArr4 = arr4.map((item, index) => {
+    if (index !== 2) {
+        return item * 2;
+    }
+    return item;
+});
+
+console.log(newArr4);
+
+//------------------- forEach
+
+// так же как и тар, принимает как параметер callback функцию.
+// но не возвращает ничего и ничего не создает или меняет, просто прокручивается через элементы массива
+
+const arr5 = [1, 2, 3];
+
+const newItem = arr5.forEach((item) => {
+    console.log(item); // вернет undefined
+});
+
+
+// =======================filter
+
+// метод filter фильтрует элементы массива в зависимости от условия которые мы создаем.
+// работает похоже на тар
+// возвращает новый массив
+
+const words = ['hello', 'afternoon', 'fun', 'paranthesis', 'hammer'];
+const filteredWords = words.filter((word) => word.length > 6);
+
+console.log(filteredWords);
+
+// Пример
+// найти и распечатать все четные цифры
+const numbers = [1, 2, 3, 4];
+const evenNumbers = numbers.filter(num => num % 2 === 0);
+console.log(evenNumbers);
+
+//----------------------------------
+// includes
+
+// // ищет если есть элементы массива соответствующие условию
+// // возвращает true или false
+
+const arr6 = ['dog', 'cat', 'bird'];
+console.log(arr6.includes('dog'));
+console.log(arr6.includes('fish'));
+
+
+// // параметры:
+//  searchElement - элемент который искать
+//      fromIndex - откуда искать
+//          0 based
+
+console.log(["a", "b", "c"].includes("a")); //true
+console.log(["a", "b", "c"].includes("b", 1)); //true
+console.log(["a", "b", "c"].includes("b", 3)); //false
+
+
+//-----------------------------
+// reduce
+//----------------------------
+const res1 = arr.reduce(callbackFunction, initialValue);
+
+// метод принимает 2 аргумента: функцию и изначальное значение
+// метод который исполняет какие то вычисления для каждого элемента массива по порядку,
+// передавая результат из предыдущего вычисления следющему.
+
+// конечный результат - одно значение, возвращается
+
+// // задача: сложить все элементы массива
+
+const arr8 = [1, 2, 3, 4];
+const initialValue = 0;
+
+const sum8 = arr8.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue;
+}, initialValue);
+
+console.log(sum8);
+
+// initialValue - не обязательно. первое значение.
+
+// accumulator
+// - одна из двух аргументов
+// - он собирает все значения наших вычислений.
+// - первый раз - либо равен начальному значению (initialValue), либо первому элементу массива
+// currentValue
+// - второй аргумент
+// - значение элемента массива, по порядку (нынешнее значение элемента массива)
+
+
+
+
+
 
