@@ -58,40 +58,75 @@ infiniteLoop( [[1,2,3],[4,5,6],[7,8,9]],"left",1) should return [[2,3,4],[5,6,7]
 infiniteLoop( [[1,2,3],[4,5,6],[7,8,9]],"right",1) should return [[9,1,2],[3,4,5],[6,7,8]]
 infiniteLoop( [[1,2],[3,4,5,6],[7,8,9,10]],"left",2) should return [[3,4],[5,6,7,8],[9,10,1,2]]
 */
+
+//------------------------------first solution
+// const arr = [[1,2,3],[4,5,6],[7,8,9]];
+// const d = 'left';
+// const n = 1;
+
+// function flattenArray() {
+//     const resultArray = [];
+
+//     //flatten
+//     const arrF = arr.flat();
+//     // console.log(arrF);
+
+//     // move
+//     for (let i = 0; i < n; i++) {
+//         if (d === 'left') {
+//             arrF.push(arrF.shift())
+//             // console.log(arrF);
+//         } 
+//         else if (d === 'right') {
+//             arrF.unshift(arrF.pop())
+//         }        
+//     }
+
+//     // create final arr, e.g. [4, 5, 6, 7, 8, 9, 1, 2, 3]
+//     for (let i = 0; i < arr.length; i++) {
+//         const subLength = arr[i].length;
+
+//         const cut = arrF.splice(0, subLength)
+//         resultArray.push(cut)
+//         // console.log(cut);
+//     }
+
+
+//     return resultArray
+// }
+
+// console.log('origin: ', arr);
+// console.log(flattenArray());
+
+//------------------------------second solution
 const arr = [[1,2,3],[4,5,6],[7,8,9]];
 const d = 'left';
 const n = 1;
 
-function flattenArray() {
-    const resultArray = [];
-
-    //flatten
-    const arrF = arr.flat();
-    // console.log(arrF);
-
-    // move
+function directChange() {
     for (let i = 0; i < n; i++) {
-        if (d === 'left') {
-            arrF.push(arrF.shift())
-            // console.log(arrF);
+        if (d === "right") {
+            const element = arr[arr.length - 1].pop();
+
+            arr[0].unshift(element);
+
+            for (let j = 0; j < arr.length - 1; j++) {
+                arr[j + 1].unshift(arr[j].pop());           
+            }
         } 
-        else if (d === 'right') {
-            arrF.unshift(arrF.pop())
+        else if (d === "left") {
+            const element = arr[0].shift();
+
+            arr[arr.length - 1].push(element);
+
+            for (let j = arr.length - 1; j > 0; j--) {
+                arr[j - 1].push(arr[j].shift());
+                
+            }
         }        
     }
-
-    // create final arr, e.g. [4, 5, 6, 7, 8, 9, 1, 2, 3]
-    for (let i = 0; i < arr.length; i++) {
-        const subLength = arr[i].length;
-
-        const cut = arrF.splice(0, subLength)
-        resultArray.push(cut)
-        // console.log(cut);
-    }
-
-
-    return resultArray
+    return arr
 }
 
 console.log('origin: ', arr);
-console.log(flattenArray());
+console.log(directChange());
