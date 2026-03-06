@@ -100,33 +100,54 @@ infiniteLoop( [[1,2],[3,4,5,6],[7,8,9,10]],"left",2) should return [[3,4],[5,6,7
 
 //------------------------------second solution
 const arr = [[1,2,3],[4,5,6],[7,8,9]];
-const d = 'left';
-const n = 1;
+const d = 'right';
+const n = 2;
 
-function directChange() {
-    for (let i = 0; i < n; i++) {
-        if (d === "right") {
-            const element = arr[arr.length - 1].pop();
+// function directChange() {
+//     for (let i = 0; i < n; i++) {
+//         if (d === "right") {
+//             const element = arr[arr.length - 1].pop();
 
-            arr[0].unshift(element);
+//             arr[0].unshift(element);
 
-            for (let j = 0; j < arr.length - 1; j++) {
-                arr[j + 1].unshift(arr[j].pop());           
-            }
-        } 
-        else if (d === "left") {
-            const element = arr[0].shift();
+//             for (let j = 0; j < arr.length - 1; j++) {
+//                 arr[j + 1].unshift(arr[j].pop());           
+//             }
+//         } 
+//         else if (d === "left") {
+//             const element = arr[0].shift();
 
-            arr[arr.length - 1].push(element);
+//             arr[arr.length - 1].push(element);
 
-            for (let j = arr.length - 1; j > 0; j--) {
-                arr[j - 1].push(arr[j].shift());
+//             for (let j = arr.length - 1; j > 0; j--) {
+//                 arr[j - 1].push(arr[j].shift());
                 
-            }
-        }        
-    }
-    return arr
+//             }
+//         }        
+//     }
+//     return arr
+// }
+
+// console.log('origin: ', arr);
+// console.log(directChange());
+
+//-------------------------third solution
+
+function withMap() {
+    if (d === "left") {
+        for (let i = 0; i < n; i++)
+            arr.map((value, index, arr) => {
+                return arr.at(index-1).push(value.shift());
+            });
+
+        } 
+        else if (d === "right") {
+            for (let i = 0; i < n; i++)
+                arr.map((value,index,arr) => {
+                value.unshift(arr.at(index-1).pop());        
+            });
+        }
+    return arr;
 }
 
-console.log('origin: ', arr);
-console.log(directChange());
+console.log(withMap());
