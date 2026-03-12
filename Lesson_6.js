@@ -311,101 +311,96 @@ for (let i = 0; i < arrValues.length; i++) {
 
 // ==== Object. entries()
 
-// // метод Object.entries() возвращает массив из пар (ключ/значение как массив) объекта
+// метод Object.entries() возвращает массив из пар (ключ/значение как массив) объекта
 
-// const obj2 = {
-//     a: 1,
-//     b: 2,
-//     c: 3
-// }
+const obj2 = {
+    a: 1,
+    b: 2,
+    c: 3
+}
 
-// const arrEntries = Object.entries(obj);
-// console.log(arrEntries);
+const arrEntries = Object.entries(obj2);
+console.log(arrEntries);
 
-// for (let i = 0; i < arrEntries.length; i++) {
-//     const arr = arrEntries[i];
-//     // console.log(arr);
-//     console.log(arr[0] +": " + arr[1]);
-// }
+for (let i = 0; i < arrEntries.length; i++) {
+    const arr = arrEntries[i];
+    // console.log(arr);
+    console.log(arr[0] +": " + arr[1]);
+}
 
 
-// // -------------------- функции внутри объекта
+// -------------------- функции внутри объекта
 
 // мы создаем объект пользователя
 
-// const person = {
-//     name: "Jim",
-//     eyes: "Blue",
-//     age: 30
-// }
+const personNew = {
+    name: "Jim",
+    eyes: "Blue",
+    age: 30
+}
 
 /*
 в реальном мире, пользователь может совершать действия: разговаривать, оплачивать покупки и т.п.
 такие действия в объектах представлены функциями
 */
 
-// person.greetings = function () {
-//     return "Hello, everyone! What a wonderful day!";
-// }
+personNew.greetings = function () {
+    return "Hello, everyone! What a wonderful day!";
+}
 
-// console.log(person);
-// console.log(person.greetings());
+console.log(personNew);
+console.log(personNew.greetings());
 
 
 /*
 мы так же можем создать функцию отдельно и потом присвоить ее к свойству объекта
 */
 
-// function Greetings() {
-//     return "Hello, everyone! What a wonderful day!";
-// }
+function Greetings() {
+    return "Hello, everyone! What a wonderful day!";
+}
 
-// person.greetings = Greetings;
-// console.log(person.greetings());
+person.greetings = Greetings;
+console.log(person.greetings());
 
 
+// либо, если мы создаем свойство сразу в объекте, можно
 
-/*
-либо, если мы создаем свойство сразу в объекте, можно
-* /
 const person2 = {
     name: "Jim",
     greetings: function() {
         return "Hello, everyone! What a wonderful day!";
+    }
 }
 
+// Функцию, которая является свойством объекта, называют методом этого объекта.
 
-Функцию, которая является свойством объекта, называют методом этого объекта.
+// Итак, мы получили метод объекта. Мы можем переписать наш объект вот так:
 
-Итак, мы получили метод объекта. Мы можем переписать наш объект вот так:
-*/
-
-// const person1 = {
-//     name: "Jim",
-//     eyes: "Blue",
-//     age: 30,
-//     greetings: function() {
-//         return "Hello, everyone! What a wonderful day!";
-//     }
-// }
-// console.log(person1.greetings());
+const person1 = {
+    name: "Jim",
+    eyes: "Blue",
+    age: 30,
+    greetings: function() {
+        return "Hello, everyone! What a wonderful day!";
+    }
+}
+console.log(person1.greetings());
 
 
-/*
-можно сократить. Можно опустить ключевое слово function
-*/
+// можно сократить. Можно опустить ключевое слово function
 
-// const person = {
-// name: "Jim",
-// eyes: "Blue",
-// age: 30,
+const person = {
+name: "Jim",
+eyes: "Blue",
+age: 30,
 
-//     greetings() {
-//         return "Hello, everyone! What a wonderful day!";
-//     }
-// };
+    greetings() {
+        return "Hello, everyone! What a wonderful day!";
+    }
+};
 
-// console.log(person.greetings());
+console.log(person.greetings());
 
 
 // // ------------------ THIS
@@ -413,21 +408,20 @@ const person2 = {
 /*
 Как правило, методу объекта требуется доступ к информации, хранящейся в объекте, для выполнения своей работы.
 Например, коду внутри person.greetings() может потребоваться имя или возраст, которое хранится в объекте person.
-Для доступа к информации внутри объекта метод может использовать ключевое слово this.
-Например:
+Для доступа к информации внутри объекта метод может использовать ключевое слово this. Например:
 */
 
-// const person3 = {
-//     name: "Jim",
-//     eyes: "Blue",
-//     age: 30,
+const person3 = {
+    name: "Jim",
+    eyes: "Blue",
+    age: 30,
 
-//     greetings() {
-//         return `Hello, everyone! My name is ${this.name}`;
-//     }
-// };
+    greetings() {
+        return `Hello, everyone! My name is ${this.name}`;
+    }
+};
 
-// console.log(person3.greetings());
+console.log(person3.greetings());
 
 // // в данном случае this - это этот конкретный, текущий объект и значение this будет являться person.
 // // Его значение вычисляется во время выполнения кода, в зависимости от контекста.
@@ -436,139 +430,139 @@ const person2 = {
 
 // // Пример:
 
-// function Greetings() {
-//     console.log(`Hello. My name is ${this.name}` );
-//     }
+function Greetings() {
+    console.log(`Hello. My name is ${this.name}` );
+    }
 
-// let user1 = {
-//     name: "John"
-// }
+let user3 = {
+    name: "John"
+}
 
-// let user2 = {
-//     name: "Jack"
-// }
+let user4 = {
+    name: "Jack"
+}
 
-// user1.greetings = Greetings;
-// user2.greetings = Greetings;
-// user1.greetings(); // this внутри функции - это объект перед точкой, т.е. user1
-// user2.greetings(); // this внутри функции - это объект перед точкой, т.е. user2
+user3.greetings = Greetings;
+user4.greetings = Greetings;
+user3.greetings(); // this внутри функции - это объект перед точкой, т.е. user1
+user4.greetings(); // this внутри функции - это объект перед точкой, т.е. user2
+
 /*
 Такое использование this не очень приветсвуется, т.к. легко допустить ошибку.
 Поэтому лучше декларировать методы внутри объекта.
 */
 
-// // Заметим, что у стрелочных функциях нет this.|
-// // Если мы ссылаемся на this внутри такой функции, то оно берётся из внешней обычной функции.
-// // Например, здесь метод sayHi() использует значение this из внешнего метода person.introduction():
+// Заметим, что у стрелочных функциях нет this.|
+// Если мы ссылаемся на this внутри такой функции, то оно берётся из внешней обычной функции.
+// Например, здесь метод sayHi() использует значение this из внешнего метода person.introduction():
 
-// let person = {
-//     name: "John",
-//     age: 30,
+let person = {
+    name: "John",
+    age: 30,
 
-//     introduction() {
-//         let sayHi = () => {
-//             return console.log(`Hello. My name is ${this.name}`);
-//         }
-//         return sayHi();
-//     }
-// }
+    introduction() {
+        let sayHi = () => {
+            return console.log(`Hello. My name is ${this.name}`);
+        }
+        return sayHi();
+    }
+}
 
-// person.introduction();
+person.introduction();
 
 /*
-Это особенность стрелочных функций.
-Она полезна, когда мы на самом деле не хотим иметь отдельное this, а хотим взять его из внешнего контекста.
-Например, стрелочные функции используются в функциях обратного вызова (callback functions)
-для поддержания правильного контекста.
+Это особенность стрелочных функций. Она полезна, когда мы на самом деле не хотим иметь отдельное this, 
+а хотим взять его из внешнего контекста. Например, стрелочные функции используются в функциях обратного
+вызова (callback functions) для поддержания правильного контекста.
 */
 
-// //  Пример 2:
+//  Пример 2:
 
-// const counter = {
-//     count: 0,
+const counter = {
+    count: 0,
 
-//     increment: () => {
-//         return this.count++;
-//     }
+    increment: () => {
+        return this.count++;
+    }
 
-//     // increment(){
-//     //     return ++this.count;
-//     // }
-// }
+    // increment(){
+    //     return ++this.count;
+    // }
+}
 
-// console.log(counter.count); // <-- свойство count из объекта
+console.log(counter.count); // <-- свойство count из объекта
 
-// // // "this" НЕ соответствует свойству "count", а соответсвует глобальной переменной "count" (у нас ее нет, поэтому будет ошибка)
+// "this" НЕ соответствует свойству "count", а соответсвует глобальной переменной "count" (у нас ее нет, поэтому будет ошибка)
 
-// console.log(counter.increment());
+console.log(counter.increment());
 
-// // ----------------- аргументы методов
-// // методы объекта могут принимать аргументы
+// ----------------- аргументы методов
+// методы объекта могут принимать аргументы
 
-// let person = {
-//     name: "John",
-//     age: 30,
+let person = {
+    name: "John",
+    age: 30,
 
-//     introduction(coworkerName) {
-//         return `Hello ${coworkerName}. I'm ${this.name}`;
-//     }
-// }
+    introduction(coworkerName) {
+        return `Hello ${coworkerName}. I'm ${this.name}`;
+    }
+}
 
-// console.log(person.introduction("Bob"));
+console.log(person.introduction("Bob"));
 
 
 
-// // ==== копирование методов объекта
+// ==== копирование методов объекта
 
-// // методы объекта могут быть скопированы между разныме объектами. есть 3 способа:
+// методы объекта могут быть скопированы между разныме объектами. есть 3 способа:
 
-// // 1. Прямое копирование
+// 1. Прямое копирование
 
-// const source1 = {
-//     greet: function(name) {
-//         return `Hello, ${name} !`;
-//     }
-// }
+const source1 = {
+    greet: function(name) {
+        return `Hello, ${name} !`;
+    }
+}
 
-// const target = {};
+const target1 = {};
 
-// // Копируем метод "greet" из объекта source в объект target
-// target.greet = source1.greet;
+// Копируем метод "greet" из объекта source в объект target
+target1.greet1 = source1.greet;
 
-// console.log(source1.greet("Olya"));
-// console.log(target.greet("Katya"));
+console.log(source1.greet("Olya"));
+console.log(target1.greet1("Katya"));
 
 // 2. Использование Object.assign() для поверхностного копирования
 // примитивные свойства копируются полностью
 // вложенные массивы или объекты копируются поверхностно
 
-// const source = {
-//     value: 10,
-//     details: {
-//         age: 25
-//     },
+const source3 = {
+    value: 10,
+    details: {
+        age: 25
+    },
 
-//     sayHi: function() {
-//         return "Hi there!";
-//     }
-// }
+    sayHi: function() {
+        return "Hi there!";
+    }
+}
 
-// const target1 = {};
+const target4 = {};
 
 // // Копируем метод "sayHi" and свойство "value" из source в target
-// Object.assign(target1, source);
+Object.assign(target4, source3);
 
-// console.log(source);
+console.log(source3);
 
-// console.log(source.value);
-// console.log(target1.value);
+console.log(source3.value);
+console.log(target4.value);
 
-// target1.details.age = 21;
-// console.log(source.details.age);
-// console.log(target1.details.age);
+target4.details.age = 21;
+console.log(source3.details.age);
+console.log(target4.details.age);
 
-// console.log(source);
-// console.log(target1);
+console.log(source3);
+console.log(target4);
 
 // 3. Использование Spread Оператора ( ... ) для поверхностного копирования
 // (да, Spread оператор может использоваться и с объектами, не только с массивами)
@@ -582,7 +576,7 @@ const source = {
     }
 }
 
-const target = { ... source };
+const target = { ...source };
 
 console.log(target.calculate(5, 3));
 console.log(target.data);

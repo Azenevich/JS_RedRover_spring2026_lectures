@@ -149,15 +149,15 @@
 
 // 6. Есть список людей, которые подписались на международную встречу разработчиков.
 
-//  var developers = [
-//      { firstName: 'Emma', lastName: 'Z.', country: 'Netherlands', age: 29, language: 'Ruby' },
-//      { firstName: 'Peter', lastName: 'B.', country: 'Poland', age: 48, language: 'Javascript' },
-//      { firstName: 'Natasha', lastName: 'P.', country: 'Mexico', age: 25, language: 'C#' },
-//      { firstName: 'Josh', lastName: 'A.', country: 'USA', age: 26, language: 'C#' },
-//      { firstName: 'Augusto', lastName: 'C.', country: 'Spain', age: 32, language: 'Java' },
-//      { firstName: 'Lei Mi', lastName: 'S.', country: 'China', age: 52, language: 'Fortran' },
-//      { firstName: 'Mikey', lastName: 'L.', country: 'New Zealand', age: 30, language: 'Node' }
-//  ];
+ var developers = [
+     { firstName: 'Emma', lastName: 'Z.', country: 'Netherlands', age: 29, language: 'Ruby' },
+     { firstName: 'Peter', lastName: 'B.', country: 'Poland', age: 48, language: 'Javascript' },
+     { firstName: 'Natasha', lastName: 'P.', country: 'Mexico', age: 25, language: 'C#' },
+     { firstName: 'Josh', lastName: 'A.', country: 'USA', age: 26, language: 'C#' },
+     { firstName: 'Augusto', lastName: 'C.', country: 'Spain', age: 32, language: 'Java' },
+     { firstName: 'Lei Mi', lastName: 'S.', country: 'China', age: 52, language: 'Fortran' },
+     { firstName: 'Mikey', lastName: 'L.', country: 'New Zealand', age: 30, language: 'Node' }
+ ];
 
 //     Вопрос: есть ли хоть один разработчик, работающий на JavaScript? Возвратите да или нет. Будьте внимательны.
 
@@ -183,3 +183,11 @@
 //     a. Выведите в console названия всех книг.
 //     b. Выведите в console имена самой популярной книги каждого из авторов в читабельном формате
 //     c. Отсортируйте библиотеку по году выпуска книг
+
+
+
+// 1. У вас есть массив чисел, нужно наполнить массив числами первого массива, умноженными на 2.
+// const nums = [3, 88, 65, 5, 9]; через мап
+
+//Преобразуйте многомерный массив в одномерный массив разными способами (классический for, for in, for of).
+// const multiArr = [[1,2], [3,4], [5,6]];
