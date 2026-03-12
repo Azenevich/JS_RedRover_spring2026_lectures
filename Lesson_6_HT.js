@@ -241,7 +241,7 @@ console.log(maxPriceDes);
 
 const library = [
   {
-    author: "Стивен Кинг",
+    author: "Stephen King",
     isbn: "978-0-385-08695-0",
     bookname: "Carrie",
     genre: "horror",
@@ -252,7 +252,7 @@ const library = [
       "Carrie is the debut horror novel by American author Stephen King, released in 1974.",
   },
   {
-    author: "Стивен Кинг",
+    author: "Stephen King",
     isbn: "978-0-385-00751-1",
     bookname: "Salem's Lot",
     genre: "horror",
@@ -263,7 +263,7 @@ const library = [
       "Salem's Lot is a 1975 American horror novel by author Stephen King.",
   },
   {
-    author: "Стивен Кинг",
+    author: "Stephen King",
     isbn: "978-0-385-12167-5",
     bookname: "The Shining",
     genre: "horror ",
@@ -274,7 +274,7 @@ const library = [
       "The Shining is a 1977 horror novel by American author Stephen King.",
   },
   {
-    author: "Стивен Кинг",
+    author: "Stephen King",
     isbn: "978-0-385-12168-2",
     bookname: "The Stand",
     genre: ["Post-apocalyptic", "Dark fantasy"],
@@ -285,7 +285,7 @@ const library = [
       "The Stand is an epic post-apocalyptic dark fantasy novel written by American author Stephen King and first published in 1978 by Doubleday.",
   },
   {
-    author: "Стивен Кинг",
+    author: "Stephen King",
     isbn: "978-0-670-85503-2",
     bookname: "Insomnia",
     genre: ["horror", "fantasy"],
@@ -346,7 +346,7 @@ const library = [
     year: 1990,
     genre: "adventure",
     "number of pages": 239,
-    popularity: 4,
+    popularity: 3,
     "first sentense":
       'Climb aboard the raft with Huck and Jim and drift away from the "sivilized" life and into a world of adventure, excitement, danger, and self-discovery.',
   },
@@ -415,17 +415,21 @@ const library = [
 //     b. Выведите в console имена самой популярной книги каждого из авторов в читабельном формате
 
 function popBook(library) {
+    let stivenKingBooks = library.filter(author => author.author === 'Stephen King');
+    let popBookStivKing = stivenKingBooks.reduce((current, next) => current.popularity > next.popularity ? current : next);
+
+    let markTwainBooks = library.filter(author => author.author === 'Mark Twain');
+    let popBookmarkTwain = markTwainBooks.reduce((current, next) => current.popularity > next.popularity ? current : next);
+
     let aleksanderSergeevichBooks = library.filter(author => author.author === 'Aleksander Sergeevich');
     let popBookAlSerg = aleksanderSergeevichBooks.reduce((current, next) => current.popularity > next.popularity ? current : next);
 
+    let result = [popBookStivKing, popBookAlSerg, popBookmarkTwain]
 
-    
-    return popBookAlSerg
+    return result
 }
 
 console.log(popBook(library));
-
-
 
 
 //     c. Отсортируйте библиотеку по году выпуска книг
