@@ -280,7 +280,7 @@ const library = [
     genre: ["Post-apocalyptic", "Dark fantasy"],
     year: 1978,
     pages: 823,
-    popularity: 5,
+    popularity: 2,
     "first sentense":
       "The Stand is an epic post-apocalyptic dark fantasy novel written by American author Stephen King and first published in 1978 by Doubleday.",
   },
@@ -409,10 +409,25 @@ const library = [
 
 //     a. Выведите в console названия всех книг.
 
-let booksName = library.map(element => element.bookname)
-console.log(booksName);
+// let booksName = library.map(element => element.bookname)
+// console.log(booksName);
 
 //     b. Выведите в console имена самой популярной книги каждого из авторов в читабельном формате
+
+function popBook(library) {
+    let aleksanderSergeevichBooks = library.filter(author => author.author === 'Aleksander Sergeevich');
+    let popBookAlSerg = aleksanderSergeevichBooks.reduce((current, next) => current.popularity > next.popularity ? current : next);
+
+
+    
+    return popBookAlSerg
+}
+
+console.log(popBook(library));
+
+
+
+
 //     c. Отсортируйте библиотеку по году выпуска книг
 
 // 1. У вас есть массив чисел, нужно наполнить массив числами первого массива, умноженными на 2.
