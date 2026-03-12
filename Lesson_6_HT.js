@@ -161,19 +161,23 @@
 
 //     Вопрос: есть ли хоть один разработчик, работающий на JavaScript? Возвратите да или нет. Будьте внимательны.
 
+let javaScriptDevelopersList = developers.filter(user => user.language.toLowerCase() === 'JavaScript'.toLowerCase());
+let count = javaScriptDevelopersList.length > 0
+console.log(count);
+
 // 7. Задача для сладкоежек. Есть массив десертов. Выведите самый дешевый десерт и самый дорогой десерт.
 
-//     const desserts = [
-//         { name: "Пирожное", price: 65 },
-//         { name: "Мороженое", price: 35 },
-//         { name: "Торт Наполеон", price: 250 },
-//         { name: "Песочное Печенье", price: 50 },
-//         { name: "Пудинг", price: 80 },
-//         { name: "Фруктовый Тарт", price: 40 },
-//         { name: "Желе Земляничное", price: 40 },
-//         { name: "Вафли Шоколадные", price: 36 },
-//         { name: "Булочка с Изюмом", price: 28 }
-//     ];
+    const desserts = [
+        { name: "Пирожное", price: 65 },
+        { name: "Мороженое", price: 35 },
+        { name: "Торт Наполеон", price: 250 },
+        { name: "Песочное Печенье", price: 50 },
+        { name: "Пудинг", price: 80 },
+        { name: "Фруктовый Тарт", price: 40 },
+        { name: "Желе Земляничное", price: 40 },
+        { name: "Вафли Шоколадные", price: 36 },
+        { name: "Булочка с Изюмом", price: 28 }
+    ];
 
 // 8. Креативное задание.
 
