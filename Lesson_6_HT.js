@@ -233,11 +233,11 @@ let maxPriceDes = desserts.reduce((previous, current) => {
 });
 console.log(maxPriceDes);
 
-// 8. Креативное задание.
+// // 8. Креативное задание.
 
-// Создайте библиотеку книг Стивена Кинга, Марка Твена и Александра Сергеевича. В библиотеке должно быть по 5 книг каждого писателя. Каждая
-// книга должна иметь идентификатор (isbn), имя книги, имя автора, год выпуска, жанр, количество страниц, популярность книги у этого
-// автора (от 1 до 5) и первое предложение/строку.
+// // Создайте библиотеку книг Стивена Кинга, Марка Твена и Александра Сергеевича. В библиотеке должно быть по 5 книг каждого писателя. Каждая
+// // книга должна иметь идентификатор (isbn), имя книги, имя автора, год выпуска, жанр, количество страниц, популярность книги у этого
+// // автора (от 1 до 5) и первое предложение/строку.
 
 const library = [
   {
@@ -407,49 +407,52 @@ const library = [
   },
 ];
 
-//     a. Выведите в console названия всех книг.
+// // a. Выведите в console названия всех книг.
 
 // let booksName = library.map(element => element.bookname)
 // console.log(booksName);
 
-//     b. Выведите в console имена самой популярной книги каждого из авторов в читабельном формате
+// //    b. Выведите в console имена самой популярной книги каждого из авторов в читабельном формате
 
-function popBook(library) {
-  let stivenKingBooks = library.filter(
-    (author) => author.author === "Stephen King",
-  );
-  let popBookStivKing = stivenKingBooks.reduce((current, next) =>
-    current.popularity > next.popularity ? current : next,
-  );
+// function popBook(library) {
+//   let stivenKingBooks = library.filter(
+//     (author) => author.author === "Stephen King",
+//   );
+//   let popBookStivKing = stivenKingBooks.reduce((current, next) =>
+//     current.popularity > next.popularity ? current : next,
+//   );
 
-  let markTwainBooks = library.filter(
-    (author) => author.author === "Mark Twain",
-  );
-  let popBookmarkTwain = markTwainBooks.reduce((current, next) =>
-    current.popularity > next.popularity ? current : next,
-  );
+//   let markTwainBooks = library.filter(
+//     (author) => author.author === "Mark Twain",
+//   );
+//   let popBookmarkTwain = markTwainBooks.reduce((current, next) =>
+//     current.popularity > next.popularity ? current : next,
+//   );
 
-  let aleksanderSergeevichBooks = library.filter(
-    (author) => author.author === "Aleksander Sergeevich",
-  );
-  let popBookAlSerg = aleksanderSergeevichBooks.reduce((current, next) =>
-    current.popularity > next.popularity ? current : next,
-  );
+//   let aleksanderSergeevichBooks = library.filter(
+//     (author) => author.author === "Aleksander Sergeevich",
+//   );
+//   let popBookAlSerg = aleksanderSergeevichBooks.reduce((current, next) =>
+//     current.popularity > next.popularity ? current : next,
+//   );
 
-  let result = [popBookStivKing, popBookAlSerg, popBookmarkTwain];
+//   let result = [popBookStivKing, popBookAlSerg, popBookmarkTwain];
 
-  return result;
-}
+//   return result;
+// }
 
-console.log(popBook(library));
+// console.log(popBook(library));
 
-//     c. Отсортируйте библиотеку по году выпуска книг
+// //    c. Отсортируйте библиотеку по году выпуска книг
 
-// Задания с ревью
-// 1. У вас есть массив чисел, нужно наполнить массив числами первого массива, умноженными на 2.
-// const nums = [3, 88, 65, 5, 9]; через мап
+const sortLibrary = library.sort((a, b) => a.year - b.year);
+console.log(sortLibrary);
 
-// 2Преобразуйте многомерный массив в одномерный массив разными способами (классический for, for in, for of).
+// // Задания с ревью
+// // 1. У вас есть массив чисел, нужно наполнить массив числами первого массива, умноженными на 2.
+// // const nums = [3, 88, 65, 5, 9]; через мап
+
+// // 2 Преобразуйте многомерный массив в одномерный массив разными способами (классический for, for in, for of).
 const multiArr = [
   [1, 2],
   [3, 4],
