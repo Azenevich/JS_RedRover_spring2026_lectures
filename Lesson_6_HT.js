@@ -450,7 +450,12 @@ console.log(sortLibrary);
 
 // // Задания с ревью
 // // 1. У вас есть массив чисел, нужно наполнить массив числами первого массива, умноженными на 2.
-// // const nums = [3, 88, 65, 5, 9]; через мап
+// // const nums = [3, 88, 65, 5, 9]; через map
+const nums = [3, 88, 65, 5, 9]
+let editedNums = nums.map(num => num * 2)
+console.log(editedNums);
+let newNums = nums.concat(editedNums);
+console.log(newNums);
 
 // // 2 Преобразуйте многомерный массив в одномерный массив разными способами (классический for, for in, for of).
 const multiArr = [
