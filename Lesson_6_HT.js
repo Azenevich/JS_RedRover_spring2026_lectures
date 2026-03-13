@@ -415,27 +415,69 @@ const library = [
 //     b. Выведите в console имена самой популярной книги каждого из авторов в читабельном формате
 
 function popBook(library) {
-    let stivenKingBooks = library.filter(author => author.author === 'Stephen King');
-    let popBookStivKing = stivenKingBooks.reduce((current, next) => current.popularity > next.popularity ? current : next);
+  let stivenKingBooks = library.filter(
+    (author) => author.author === "Stephen King",
+  );
+  let popBookStivKing = stivenKingBooks.reduce((current, next) =>
+    current.popularity > next.popularity ? current : next,
+  );
 
-    let markTwainBooks = library.filter(author => author.author === 'Mark Twain');
-    let popBookmarkTwain = markTwainBooks.reduce((current, next) => current.popularity > next.popularity ? current : next);
+  let markTwainBooks = library.filter(
+    (author) => author.author === "Mark Twain",
+  );
+  let popBookmarkTwain = markTwainBooks.reduce((current, next) =>
+    current.popularity > next.popularity ? current : next,
+  );
 
-    let aleksanderSergeevichBooks = library.filter(author => author.author === 'Aleksander Sergeevich');
-    let popBookAlSerg = aleksanderSergeevichBooks.reduce((current, next) => current.popularity > next.popularity ? current : next);
+  let aleksanderSergeevichBooks = library.filter(
+    (author) => author.author === "Aleksander Sergeevich",
+  );
+  let popBookAlSerg = aleksanderSergeevichBooks.reduce((current, next) =>
+    current.popularity > next.popularity ? current : next,
+  );
 
-    let result = [popBookStivKing, popBookAlSerg, popBookmarkTwain]
+  let result = [popBookStivKing, popBookAlSerg, popBookmarkTwain];
 
-    return result
+  return result;
 }
 
 console.log(popBook(library));
 
-
 //     c. Отсортируйте библиотеку по году выпуска книг
 
+// Задания с ревью
 // 1. У вас есть массив чисел, нужно наполнить массив числами первого массива, умноженными на 2.
 // const nums = [3, 88, 65, 5, 9]; через мап
 
-//Преобразуйте многомерный массив в одномерный массив разными способами (классический for, for in, for of).
-// const multiArr = [[1,2], [3,4], [5,6]];
+// 2Преобразуйте многомерный массив в одномерный массив разными способами (классический for, for in, for of).
+const multiArr = [
+  [1, 2],
+  [3, 4],
+  [5, 6],
+];
+let newMultArr = multiArr.flat();
+console.log(newMultArr);
+
+let newArr = [];
+for (let i = 0; i < multiArr.length; i++) {
+  for (let j = 0; j < multiArr[i].length; j++) {
+    newArr.push(multiArr[i][j]);
+  }
+}
+console.log(newArr);
+
+let arrNew = [];
+for (const element of multiArr) {
+  for (const el of element) {
+    arrNew.push(el)
+  }
+}
+console.log(arrNew);
+
+let thirdArr = [];
+for (const key in multiArr) {
+  for (const el in multiArr[key]) {
+    thirdArr.push(multiArr[key][el])
+  }
+}
+console.log(thirdArr);
