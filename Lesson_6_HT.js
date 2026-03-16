@@ -399,7 +399,7 @@ const library = [
     year: 1834,
     genre: "Short stories",
     "number of pages": 74,
-    popularity: 3,
+    popularity: 5,
     "first sentense":
       "The Queen of Spades (Russian: «Пиковая дама», romanized: Pikovaya dama) is an 1834 novella with supernatural elements by Alexander Pushkin, about human avarice.",
   },
@@ -418,39 +418,57 @@ const library = [
 
 // // a. Выведите в console названия всех книг.
 
-let booksName = library.map(element => element.bookname)
-console.log(booksName);
+// let booksName = library.map(element => element.bookname)
+// console.log(booksName);
 
 // //    b. Выведите в console имена самой популярной книги каждого из авторов в читабельном формате
 
-function popBook(library) {
-  let stivenKingBooks = library.filter(
-    (author) => author.author === "Stephen King",
-  );
-  let popBookStivKing = stivenKingBooks.reduce((current, next) =>
-    current.popularity > next.popularity ? current : next,
-  );
+// function popBook(library) { //This solution does not take into account the case when there are several books with the same rating
+//   let stivenKingBooks = library.filter(
+//     (author) => author.author === "Stephen King",
+//   );
+//   let popBookStivKing = stivenKingBooks.reduce((current, next) =>
+//     current.popularity > next.popularity ? current : next,
+//   );
 
-  let markTwainBooks = library.filter(
-    (author) => author.author === "Mark Twain",
-  );
-  let popBookmarkTwain = markTwainBooks.reduce((current, next) =>
-    current.popularity > next.popularity ? current : next,
-  );
+//   let markTwainBooks = library.filter(
+//     (author) => author.author === "Mark Twain",
+//   );
+//   let popBookmarkTwain = markTwainBooks.reduce((current, next) =>
+//     current.popularity > next.popularity ? current : next,
+//   );
 
-  let aleksanderSergeevichBooks = library.filter(
-    (author) => author.author === "Aleksander Sergeevich",
-  );
-  let popBookAlSerg = aleksanderSergeevichBooks.reduce((current, next) =>
-    current.popularity > next.popularity ? current : next,
-  );
+//   let aleksanderSergeevichBooks = library.filter(
+//     (author) => author.author === "Aleksander Sergeevich",
+//   );
+//   let popBookAlSerg = aleksanderSergeevichBooks.reduce((current, next) =>
+//     current.popularity > next.popularity ? current : next,
+//   );
 
-  let result = [popBookStivKing, popBookAlSerg, popBookmarkTwain];
+//   let result = [popBookStivKing, popBookAlSerg, popBookmarkTwain];
 
-  return result;
+//   return result;
+// }
+
+// console.log(popBook(library));
+
+function mostPopBooks(library) {
+    let aleksanderSergeevichBooks = library.filter(lib => lib.author === "Aleksander Sergeevich");
+    let maxScoreAleksSerg = Math.max(...aleksanderSergeevichBooks.map(book => book.popularity));
+    let mostPopAlexSergBook = aleksanderSergeevichBooks.filter(book => book.popularity === maxScoreAleksSerg);
+
+    let stephenKingBooks = library.filter(lib => lib.author === "Stephen King");
+    let maxScoreStephenKing = Math.max(...stephenKingBooks.map(book => book.popularity));
+    let mostPopStephenKingBook = stephenKingBooks.filter(book => book.popularity === maxScoreStephenKing);
+
+    let markTwainBooks = library.filter(lib => lib.author === "Mark Twain");
+    let maxScoreMarkTwain = Math.max(...markTwainBooks.map(book => book.popularity));
+    let mostPopMarkTwainBook = markTwainBooks.filter(book => book.popularity === maxScoreMarkTwain);
+
+    let result = [mostPopAlexSergBook, mostPopStephenKingBook, mostPopMarkTwainBook]
+    return result
 }
-
-console.log(popBook(library));
+console.log(mostPopBooks(library));
 
 // //    c. Отсортируйте библиотеку по году выпуска книг
 
