@@ -94,19 +94,19 @@
 // console.log(room);
 
 // // 3. Создайте функцию, которая принимает следующий объект как параметр:
-// //     {name: "dog", legs: 4, color: "yellow"}
-// //     Возвратите строку: "This yellow dog has 4 legs."
-// const dogDescription = {
-//     name: "dog",
-//     legs: 4,
-//     color: "yellow"
-// };
+//     {name: "dog", legs: 4, color: "yellow"}
+//     Возвратите строку: "This yellow dog has 4 legs."
+const dogDescription = {
+    name: "dog",
+    legs: 4,
+    color: "yellow"
+};
 
-// function returnDogDescription(object) {
-//     return `This ${object.color} ${object.name} has ${object.legs} legs`
-// }
+function returnDogDescription(object) {
+    return `This ${object.color} ${object.name} has ${object.legs} legs`
+}
 
-// console.log(returnDogDescription(dogDescription));
+console.log(returnDogDescription(dogDescription));
 
 // // 4. Что произойдет при выполнении следующего кода и почему?
 
@@ -149,7 +149,7 @@
 
 // 6. Есть список людей, которые подписались на международную встречу разработчиков.
 
-var developers = [
+const developers = [
   {
     firstName: "Emma",
     lastName: "Z.",
@@ -201,11 +201,12 @@ var developers = [
   },
 ];
 
-//     Вопрос: есть ли хоть один разработчик, работающий на JavaScript? Возвратите да или нет. Будьте внимательны.
+// Вопрос: есть ли хоть один разработчик, работающий на JavaScript? Возвратите да или нет. Будьте внимательны.
 
 let javaScriptDevelopersList = developers.filter(
   (user) => user.language.toLowerCase() === "JavaScript".toLowerCase(),
 );
+console.log(javaScriptDevelopersList);
 let count = javaScriptDevelopersList.length > 0;
 console.log(count);
 
@@ -218,17 +219,25 @@ const desserts = [
   { name: "Песочное Печенье", price: 50 },
   { name: "Пудинг", price: 80 },
   { name: "Фруктовый Тарт", price: 40 },
-  { name: "Желе Земляничное", price: 40 },
+  { name: "Желе Земляничное", price: 250 },
   { name: "Вафли Шоколадные", price: 36 },
   { name: "Булочка c Изюмом", price: 28 },
 ];
 
-let minPriceDes = desserts.reduce((previous, current) => {
+let maxPrice = Math.max(...desserts.map(des => des.price));
+let maxDessertsPrice = desserts.filter(des => des.price === maxPrice);
+console.log(maxDessertsPrice);
+
+let minPrice = Math.min(...desserts.map(des => des.price));
+let minDessertsPrice = desserts.filter(des => des.price === minPrice);
+console.log(minDessertsPrice);
+
+let minPriceDes = desserts.reduce((previous, current) => { //this solution does not take into account the option when there are several desserts with the same price
   return previous.price < current.price ? previous : current;
 });
 console.log(minPriceDes);
 
-let maxPriceDes = desserts.reduce((previous, current) => {
+let maxPriceDes = desserts.reduce((previous, current) => { //this solution does not take into account the option when there are several desserts with the same price.
   return previous.price > current.price ? previous : current;
 });
 console.log(maxPriceDes);
@@ -409,39 +418,39 @@ const library = [
 
 // // a. Выведите в console названия всех книг.
 
-// let booksName = library.map(element => element.bookname)
-// console.log(booksName);
+let booksName = library.map(element => element.bookname)
+console.log(booksName);
 
 // //    b. Выведите в console имена самой популярной книги каждого из авторов в читабельном формате
 
-// function popBook(library) {
-//   let stivenKingBooks = library.filter(
-//     (author) => author.author === "Stephen King",
-//   );
-//   let popBookStivKing = stivenKingBooks.reduce((current, next) =>
-//     current.popularity > next.popularity ? current : next,
-//   );
+function popBook(library) {
+  let stivenKingBooks = library.filter(
+    (author) => author.author === "Stephen King",
+  );
+  let popBookStivKing = stivenKingBooks.reduce((current, next) =>
+    current.popularity > next.popularity ? current : next,
+  );
 
-//   let markTwainBooks = library.filter(
-//     (author) => author.author === "Mark Twain",
-//   );
-//   let popBookmarkTwain = markTwainBooks.reduce((current, next) =>
-//     current.popularity > next.popularity ? current : next,
-//   );
+  let markTwainBooks = library.filter(
+    (author) => author.author === "Mark Twain",
+  );
+  let popBookmarkTwain = markTwainBooks.reduce((current, next) =>
+    current.popularity > next.popularity ? current : next,
+  );
 
-//   let aleksanderSergeevichBooks = library.filter(
-//     (author) => author.author === "Aleksander Sergeevich",
-//   );
-//   let popBookAlSerg = aleksanderSergeevichBooks.reduce((current, next) =>
-//     current.popularity > next.popularity ? current : next,
-//   );
+  let aleksanderSergeevichBooks = library.filter(
+    (author) => author.author === "Aleksander Sergeevich",
+  );
+  let popBookAlSerg = aleksanderSergeevichBooks.reduce((current, next) =>
+    current.popularity > next.popularity ? current : next,
+  );
 
-//   let result = [popBookStivKing, popBookAlSerg, popBookmarkTwain];
+  let result = [popBookStivKing, popBookAlSerg, popBookmarkTwain];
 
-//   return result;
-// }
+  return result;
+}
 
-// console.log(popBook(library));
+console.log(popBook(library));
 
 // //    c. Отсортируйте библиотеку по году выпуска книг
 
