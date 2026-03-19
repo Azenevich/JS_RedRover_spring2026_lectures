@@ -5,31 +5,30 @@
 // https://www.w3schools.com/js/js_class_intro.asp  
 // https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript  
 
-
-
 // Задачки:
 
 // 1. Есть класс Song. Выведите на печать автора песни.
 
-//     class Song {
-//         #_author;
+    class Song {
+        #_author;
 
-//         constructor(name, author) {
-//             this.name = name;
-//             this.author = author;
-//         }
+        constructor(name, author) {
+            this.name = name;
+            this.author = author;
+        }
 
-//         get author() {
-//             return this.#_author;
-//         }
+        get author() {
+            return this.#_author;
+        }
 
-//         set author(writer) {
-//             this.#_author = writer;
-//         }
-//     }
+        set author(writer) {
+            this.#_author = writer;
+        }
+    }
 
-
-
+let newSong = new Song('Summer', 'Bon Jovi');
+console.log(newSong.author);
+console.log(newSong.name);
 
 // 2. Определите класс Shape. 
 //     - Он имеет три свойства: name, sides, и sideLength. 
@@ -46,6 +45,26 @@
 //     - Создайте новый экземпляр Shape Called triangle с name -  triangle и sides of = 3,  sideLength = 3
 //     - Вызовите triangle.calcPerimeter(), чтобы убедиться, что все работает.
 
+class Shape {
+    constructor(name, sides, sideLength) {
+        this.name = name;
+        this.sides = sides;
+        this.sideLength = sideLength;
+    }
+
+    calcPerimeter() {
+        let perimeter = this.sides * this.sideLength;
+        return perimeter;
+    }
+}
+
+let square = new Shape('square', 4, 5);
+let squarePerimeter = square.calcPerimeter();
+console.log(squarePerimeter);
+
+let triangle = new Shape('triangle', 3, 3);
+let trianglePerimeter = triangle.calcPerimeter();
+console.log(trianglePerimeter);
 
 
 // 3. Создайте класс "Employee", представляющий работника. У работника должны быть следующие свойства:
@@ -63,6 +82,48 @@
 //     3. Геттеры должны возвращать значения свойств, а сеттеры должны устанавливать 
 //         новые значения свойств.
 
+class Employee {
+    #salary;
+
+    constructor(name, age, position, salary) {
+        this.name = name;
+        this._age = age;
+        this._position = position;
+        this.#salary = salary;
+    }
+
+    get age() {
+        return this._age;
+    }
+
+    set age(ageVal) {
+        this._age = ageVal;
+    }
+
+    get position() {
+        return this._position;
+    }
+
+    set position(positionVal) {
+        this._position = positionVal;
+    }
+
+    get salary() {
+        return this.#salary;
+    }
+
+    set salary(salaryVal) {
+        this.#salary = salaryVal;
+    }
+}
+
+let newEmployee = new Employee('Alex', 25, "Head of department", 3000);
+
+console.log(newEmployee.salary); // 3000
+
+newEmployee.salary = 5000;
+
+console.log(newEmployee.salary); // 5000
 
 // 4. Создайте класс Person со следующими свойствами:
 

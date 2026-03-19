@@ -66,7 +66,7 @@
 Но у нас есть одна проблема.
 Мы создали 3 объекта от одного конструктора (шаблона). В памяти, мы выделили 3 отдельные коробочки, каждая коробочка для одного из наших объектов.
 Но когда мы вызываем наш конструктор и передаем в него значения, Javascript не знает в какую из коробочек нужно сохранять наши значения.
-I
+
 Для Javascript-a, мы просто выделили коробочки; потом скинули все наши значения куда-то на пол рядом с коробочками.
 Нам нужно сказать Javascript-y: скинь все значения от объекта 1 в коробочку 1, а значения от объекта 2 в коробочку 2, и т.д.
 
@@ -216,28 +216,28 @@ const person = new Persdr(;
 
 когда мы раньше видели вот такое:
 
-cons|t arr[ = new Array(); либо
+const arr = new Array(); либо
 const obj = new Object(); либо
 const person = new Person();
 
-BO Bcex этих случаях Array, Object, Person - эTo knaccы, a nepeMeHHые arr, obj,
-person - это объекты класса.
+Bo вcex этих случаях Array, Object, Person - эTo классы, a переменные arr, obj, person - это объекты класса.
 
 и когда мы создаем объект от класса, то объект имеет свойства и методы этого класса.
 Пример:
 */
 
 
-// class Person {
-// constructor() {
-// }
-// greetings() {
-// return "Hello. My name is John.";
-// }
-// }
-// const p = new Person();
+class Person {
+    constructor() {
+    }
+    greetings() {
+        return "Hello. My name is John.";
+    }
+}
 
-// console.log(p.greetings());
+const p = new Person();
+
+console.log(p.greetings());
 
 /*
 аргументы класса
@@ -247,25 +247,25 @@ person - это объекты класса.
 
 */
 
-// class Person {
-//     constructor(name, age, eyeColor = "brown") {
-//         this.name = name;
-//         this.age = age;
-//         this.eyeColor = eyeColor;
-//     }
+class Person {
+    constructor(name, age, eyeColor = "brown") {
+        this.name = name;
+        this.age = age;
+        this.eyeColor = eyeColor;
+    }
 
-//     greetings() {
-//         return `Hello. My name is ${this.name} .`;
-//     }
+    greetings() {
+        return `Hello. My name is ${this.name} .`;
+    }
 
-//     about() {
-//         return `Color of my eyes is ${this.eyeColor}.`;
-//     }
-// }
+    about() {
+        return `Color of my eyes is ${this.eyeColor}.`;
+    }
+}
 
-// const p1 = new Person("John", 30);
-// console.log(p1.greetings());
-// console.log(p1.about());
+const p1 = new Person("John", 30);
+console.log(p1.greetings());
+console.log(p1.about());
 
 
 // так же, можно передавать аргументы в методы (как мы делали и с объектами)
@@ -308,6 +308,7 @@ class Person {
 const p3 = new Person("John", 30);
 p3.name = "Mike";
 console.log(p3.greetings());
+console.log(p3.hobby('running'));
 
 /*
 private properties
@@ -322,8 +323,8 @@ private properties
 class Person {
     constructor(name, hourlySalary) {
 
-    this.name = name;
-    this.hourlySalary = hourlySalary;
+        this.name = name;
+        this.hourlySalary = hourlySalary;
     }
 
     #calculateSalary() {
@@ -338,7 +339,7 @@ class Person {
 }
 
 const p4 = new Person("John", 20);
-console.log(p4.#calculateSalary());//error
+// console.log(p4.#calculateSalary());//error
 console.log(p4.getWeeklySalary());
 
 // Если приватное поле, то нужно его отдельно создать
@@ -357,6 +358,7 @@ class Person {
 }
 
 const p3 = new Person("John");
+console.log(p3.getName());
 console.log(p3.#name); // не можем использовать
 
 
@@ -438,7 +440,6 @@ console.log(Car.getDealerName());
 // без ключевого слова "new".
 
 // Эти методы - статические методы, поэтому нам не нужно было созвадать объект от Math и не нужно слово "new".
-
 
 // если нужно передать переменную в статический метод, передаем как и в обычный метод
 // НО, статический метод не имеет доступа к занчениям объекта, поэтому нельзя использовать this
@@ -532,7 +533,7 @@ class Person {
 
     constructor(firstName, lastName, age) {
         this.firstName = firstName;
-        this. lastName = lastName;
+        this.lastName = lastName;
         this.age = age;
     }
 
