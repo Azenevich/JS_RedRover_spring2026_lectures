@@ -180,6 +180,41 @@ class Library {
         return this.books.map(element => element.bookname)
     }
 
+    
+    mostPopularBooks() {
+        const authors = [...new Set(this.books.map(book => book.author))];
+        const maxScoreAleksSerg = Math.max(...aleksanderSergeevichBooks.map(book => book.popularity));
+    }
+    mostPopBooks(library) {
+        let aleksanderSergeevichBooks = library.filter(lib => lib.author === "Aleksander Sergeevich");
+        
+        let mostPopAlexSergBook = aleksanderSergeevichBooks.filter(book => book.popularity === maxScoreAleksSerg);
+
+        let stephenKingBooks = library.filter(lib => lib.author === "Stephen King");
+        let maxScoreStephenKing = Math.max(...stephenKingBooks.map(book => book.popularity));
+        let mostPopStephenKingBook = stephenKingBooks.filter(book => book.popularity === maxScoreStephenKing);
+
+        let markTwainBooks = library.filter(lib => lib.author === "Mark Twain");
+        let maxScoreMarkTwain = Math.max(...markTwainBooks.map(book => book.popularity));
+        let mostPopMarkTwainBook = markTwainBooks.filter(book => book.popularity === maxScoreMarkTwain);
+
+        let result = [mostPopAlexSergBook, mostPopStephenKingBook, mostPopMarkTwainBook];
+        
+        return result
+    }
+    mostPopularBooks() {
+        const authors = [...new Set(this.books.map(book => book.author))];
+
+        return authors.map(author => {
+            const booksByAuthor = this.books.filter(book => book.author === author);
+
+            const mostPopular = booksByAuthor.reduce((prev, current) => {
+                return prev.popularity > current.popularity ? prev : current;
+            });
+
+            return `Author: ${author}, Most popular book: ${mostPopular.bookname} (popularity: ${mostPopular.popularity})`;
+        });
+    }
 }
 
 class Book {
@@ -221,7 +256,6 @@ let library = new Library([book1, book2, book3, book4, book5, book6, book7, book
 console.log(library.mostPopularBooks());
 
 // 6. Посмотреть и понять что такое Git, что такое Github, как они работают. Создать (если еще нет) аккаунт в Github.
-
 
 
 // 7. Посмотреть и понять что такое css локаторы и как они работают (после лекции в Пятницу). Потренироваться искать css локаторы на веб сайте. 
