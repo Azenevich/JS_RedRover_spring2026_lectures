@@ -432,9 +432,41 @@ new Promise ((resolve, reject) => {
 .finally(() => console.log("Промис завершен"))
 
 
+// ================================================= async/await
 
+// в 2017 году, в версии ES8 был добавлен синтаксис async/await, который обеспечивает
+// более синхронный способ работы с промисами, упрощая асинхронный код и делая его более читабельным,
+// чем традиционная цепочка промисов с .then() и .catch().
+// Как это работает?
 
+// async - говорит что будет асинхронное программирование и можно использовать await синтаксис.
+// await - приостанавливает выполнение кода пока промис работает и возвращает результат.
+    // await используется внутри async функции
 
+async function fetchData() {
+    const promise = new Promise(function(success, failure) {
+        setTimeout(() => {
+            const res = true; // симулируем результат
+            if (res) {
+                return success("Data fetched successfully");
+            }
+            return failure("Error fetching data");
+        }, 1500);
+    });
+
+// используем try/catch чтобы распечатать либо успех, либо ошибку
+    try {
+        console.log(await promise);
+    }
+
+    catch (error) {
+        console.log(error);
+    }   
+}
+
+console.log("Starting ... ");
+fetchData();
+console.log("Later ... ");
 
 
 
