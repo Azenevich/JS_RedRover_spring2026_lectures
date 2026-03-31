@@ -129,7 +129,7 @@ console.log("It's nice to meet you.");
 Эта функция имеет 2 аргумента: положительный и отрицательный.
 */
 
-let promise = new Promise(function(success, failure) {
+let promise = new Promise(function(success, failure) { //аргументы это функции
     success(),
     failure()
 });
@@ -333,9 +333,103 @@ let promise10 = new Promise(function(success) {
     return console.log(result);
 })
 
+//=============== цепочка промисов (then chaining)
+/* представим ситуацию:
+у нас есть несколько асинхронных задач (например, загрузка скриптов),
+которые нам нужно вызвать одну за другой,
+в определенном порядке. скрипт 2 не может быть вызван до скрипта 1, а скрипт 3 до скрипта 2.
+как это сделать?
+мы можем использовать цепочку промисов
+ каждый раз мы используем then, он возвращает новый промис, результат предыдущего промиса
+*/
+
+const promise11 = new Promise(function(resolve) {
+    setTimelout(()=> resolve(2), 1000);
+}). then(function(result) {
+    let r = result * 2;
+    console.log(r); // 4
+    return r;
+
+}). then(function(result) {
+    let r = result * 2;
+    console.log(r); // 8
+    return r;
+
+}).then(function(result) {
+    let r = result * 2;
+    console.log(r); // 16
+    return r;
+});
 
 
+// распространенная ошибка!
+const promise12 = new Promise(function(resolve, reject) {
+    setTimeout(()=> resolve(2), 1000);
+});
 
+promise12.then(function(result) {
+    let r = result * 2;
+    console.log(r); // ?
+    return r;
+});
+
+promise12.then(function(result) {
+    let r = result * 2;
+    console.log(r); // ?
+    return r;
+});
+
+promise12.then(function(result) {
+    let r = result * 2;
+    console.log(r); // ?
+    return r;
+});
+
+
+// =============== catch
+// catch нужен если нужно обработать ошибку
+// работает так же как и then
+let promise13 = new Promise(function(success, failure) {
+    setTimeout(() => {
+        return failure("error, sorry :(");
+    }, 1000);
+
+});
+promise13.catch(console.log);T
+
+// либо
+let promise14 = new Promise(function(success, failure) {
+    setTimeout(() => {
+        return failure("error, sorry :(");
+    }, 1000);
+}).catch((error) => {
+    return console. log(error);
+});
+
+// ======================== finally
+/* метод вызывается после завершения промиса, не важно положительного или нет.
+если нужно что-то доделать после промиса, остановить счетчик, очистить код,
+закрыть какие то соединения и т.д.
+finally не имеет аргументов
+может быть вызван до или после then/catch
+*/
+
+const num = 1;
+
+new Promise ((resolve, reject) => {
+    setTimeout(() => {
+        if (num % 2 === 0) {
+            resolve("sum is even");
+        }
+        else {
+            reject("sum is odd");
+        }
+    }, 1000);
+})
+.then(result => console.log(result))
+.then(result => console.log(result)) //можем использовать несколько then
+.catch(err => console.log(err))
+.finally(() => console.log("Промис завершен"))
 
 
 
