@@ -454,7 +454,7 @@ async function fetchData() {
         }, 1500);
     });
 
-// используем try/catch чтобы распечатать либо успех, либо ошибку
+    // используем try/catch чтобы распечатать либо успех, либо ошибку
     try {
         console.log(await promise);
     }
@@ -467,6 +467,28 @@ async function fetchData() {
 console.log("Starting ... ");
 fetchData();
 console.log("Later ... ");
+
+
+// Пример (как используются промисы в реальных ситуациях):
+// fetch - метод встроенный в Javascript, можно использовать чтобы получить результат извне, например из API
+// он возвращает промис, объект класса Response, который представляет собой ответ от сервера.
+
+async function getData() {
+    // возвращаем промис, объект класса Response
+    const response = await fetch("https://demoqa.com/BookStore/v1/Books");//fetch - встроенный метод
+
+    // объект имеет методы, один из который называется json(). он возвращает тело класса Response и переводит его в тип JSON
+    const books = await response. json();
+    console.log(books);
+}
+
+getData();
+
+
+
+
+
+
 
 
 
