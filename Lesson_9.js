@@ -245,7 +245,7 @@ let promise6 = new Promise(function(success, failure) {
 })
 // мы може написать:
 
-promise.then(
+promise6.then(
     function(result) {
         // здесь обрабатываем выполнение
     },
@@ -263,13 +263,83 @@ then() имеет два аргумента:
 then() возвращает новый промис - это может быть полезно в некоторых ситуациях. 
 then() сам по себе это тоже промис
 
-
-
-
-
-
-
 */
+
+//Example
+// кто-то написал вот такой промис
+
+let promise7 = new Promise(function(success, failure) {
+    setTimeout(() => {
+        // if (2 > 0) {
+        //     return success("promise is done!")
+        // }
+        // else {
+        //     return failure("opps");
+        // }
+        return success("promise is doneee!");
+    }, 1500);
+});
+
+// мы можем написать:
+
+promise7.then(
+    function(result) {
+        return console.log(result); // выведет "promise is doneee!" через 1.5 секунды
+    },
+    function(error) {
+        return console.log(error); // не будет запущена
+    }
+);
+
+
+// // либо, со стрелочной функцией:
+
+let promise8 = new Promise(function(success, failure) {
+    setTimeout(() => {
+        return success("promise is doneee!");
+    }, 1500);
+});
+
+promise8.then(
+    (result) => console.log(result), // выведет "promise is doneee!" через 1.5 секунду
+    (error) => console.log(error) // не будет запущена
+);
+ 
+/*
+Если мы заинтересованы только в результате успешного выполнения задачи,
+то в then можно использовать только одну функцию:
+*/
+
+let promise9 = new Promise(function(success) {
+    setTimeout(() => {
+        return success("promise is doneee!");
+    }, 1000);
+});
+
+promise.then(
+    (result) => console.log(result)
+
+);
+
+// // promise.then(console.log); // сокращение
+
+/* Еще сокращение ... Часто испольуется именно так. */
+
+let promise10 = new Promise(function(success) {
+    setTimeout(() => {
+        return success("promise is doneee !! ");
+    }, 1000);
+}).then((result) => {
+    return console.log(result);
+})
+
+
+
+
+
+
+
+
 
 
 
