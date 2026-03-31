@@ -150,7 +150,7 @@ failure(error) - используется если произошла ошибк
 
 console.log("Start");
 
-let promise = new Promise(function(success, failure) {
+let promise1 = new Promise(function(success, failure) {
     // эта функция выполнится автоматически, при вызове new Promise
 
     // симулируем долгое выполнение чего-то:
@@ -165,6 +165,55 @@ console.log("Finish");
 
 // Заметим, что мы не ждем пока исполниться примис,
 // текст "Finish" виден раньше чем результат промиса.
+
+
+/*
+Пример, где промис возвращает негативный результат:
+>> так делать нельзя, будет ошибка (об этом позже)
+*/
+
+console.log("Start");
+
+let promise2 = new Promise(function(success, failure) {
+    // опять симулируем долгое выполнение чего-то
+    setTimeout(()=> {
+        return failure(console.log("Oops, error"));
+    }, 3000);
+});
+
+console.log("Finish");
+
+// вернет или успет или провал
+
+console.log("Start");
+let ii = 0;
+
+let promise4 = new Promise(function(result, reject) {
+    // эта функция выполнится автоматически, при вызове new Promise
+
+    // симулируем долгое выполнение чего-то:
+    // через 3 секунды задача выполнена с положительным результатом
+    setTimeout(() => {
+        if (ii % 2 === 0) {
+            return result(console.log("Completed successfully"));
+        } 
+        else {
+            return reject(console.log("Oops"));
+        }
+
+    }, 3000);
+
+});
+
+console.log("Finish");
+
+
+
+
+
+
+
+
 
 
 
