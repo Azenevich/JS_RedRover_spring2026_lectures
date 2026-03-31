@@ -19,7 +19,7 @@ cleprTimeout(timeoutId); // отменил выполнение кода в пе
 // setInterval(function, setInterval);
 // если нужно вызвать функцию каждые 5 секунд, например
 
-console.log("starting ... ");]
+console.log("starting ... ");
 
 let i = 0;
 let intervalId = setInterval(function() {
