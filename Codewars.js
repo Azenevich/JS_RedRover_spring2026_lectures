@@ -500,40 +500,287 @@ And the final string to return is "Cdwr oeas".
 
 Notes
 Tested strings are at least 8 characters long.
-
 */
+function sortMyString(S) {
+    let evenChars = '';
+    let oddChars = '';
+    
+    for (let i = 0; i < S.length; i++) {
+        if (i % 2 === 0) {
+            evenChars += S[i];
+        } else {
+            oddChars += S[i];
+        }
+    }
+    
+    return evenChars + ' ' + oddChars;
+}
+
+console.log(sortMyString("CodeWars"));
+console.log(sortMyString("YCOLUE'VREER"));
 
 // https://www.codewars.com/kata/534d0a229345375d520006a0/train/javascript
 /*
+Power of two
 
+Complete the function power_of_two/powerOfTwo (or equivalent, depending on your language) that determines if a given non-negative integer is a power of two. From the corresponding Wikipedia entry:
+
+a power of two is a number of the form 2n where n is an integer, i.e. the result of exponentiation with number two as the base and integer n as the exponent.
+
+You may assume the input is always valid.
+
+Examples
+isPowerOfTwo(1024) // -> true
+isPowerOfTwo(4096) // -> true
+isPowerOfTwo(333)  // -> false
+Beware of certain edge cases - for example, 1 is a power of 2 since 2^0 = 1 and 0 is 
+not a power of 2
 */
+function isPowerOfTwo(n){
+  //.. should return true or false ..
+  // 0 не является степенью 2
+    if (n === 0) return false;
+
+    // проверка через битовую операцию:
+    // число является степенью 2, если только один бит равен 1
+    return (n & (n - 1)) === 0;
+}
+
+console.log(isPowerOfTwo(1024)); // true
+console.log(isPowerOfTwo(4096)); // true
+console.log(isPowerOfTwo(333));  // false
+console.log(isPowerOfTwo(1));    // true
+console.log(isPowerOfTwo(0));    // false
 
 // https://www.codewars.com/kata/5b047875de4c7f9af800011b/train/javascript
 /*
+String Reordering
+The input will be an array of dictionaries.
 
+Return the values as a string-seperated sentence in the order of their keys' integer equivalent (increasing order).
+
+The keys are not reoccurring and their range is -999 < key < 999. The dictionaries' keys & values will always be strings and will always not be empty.
+
+Example
+Input:
+List = [
+        {'4': 'dog' }, {'2': 'took'}, {'3': 'his'},
+        {'-2': 'Vatsan'}, {'5': 'for'}, {'6': 'a'}, {'12': 'spin'}
+       ]
+
+Output:
+'Vatsan took his dog for a spin'
 */
+function sentence(arrayOfObjects) {
+  // Преобразуем массив объектов в массив пар [key, value]
+    const pairs = arrayOfObjects.map(obj => {
+        const key = Object.keys(obj)[0]; // ключ как строка
+        return [parseInt(key), obj[key]]; // преобразуем ключ в число
+    });
+
+    // Сортируем по числовому ключу
+    pairs.sort((a, b) => a[0] - b[0]);
+
+    // Извлекаем значения в порядке ключей и объединяем в строку
+    return pairs.map(pair => pair[1]).join(' ');
+}
+
+/*second solution
+const obj = {};
+  arrayOfObjects.forEach(item => {
+    const key = Object.keys(item)[0];
+    obj[Number(key)] = item[key];
+  });
+
+  // Берём ключи, сортируем и соединяем значения
+  return Object.keys(obj)
+               .sort((a, b) => a - b)
+               .map(key => obj[key])
+               .join(' ');
+*/
+
+const List = [
+    {'4': 'dog' }, {'2': 'took'}, {'3': 'his'},
+    {'-2': 'Vatsan'}, {'5': 'for'}, {'6': 'a'}, {'12': 'spin'}
+];
+
+console.log(sentence(List)); //
 
 // https://www.codewars.com/kata/5a523566b3bfa84c2e00010b/train/javascript
 /*
+Task
+Given an array of integers , Find the minimum sum which is obtained from summing each Two integers product .
 
+Notes
+Array/list will contain positives only .
+Array/list will always have even size
+Input >> Output Examples
+minSum({5,4,2,3}) ==> return (22) 
+Explanation:
+The minimum sum obtained from summing each two integers product ,  5*2 + 3*4 = 22
+minSum({12,6,10,26,3,24}) ==> return (342)
+Explanation:
+The minimum sum obtained from summing each two integers product ,  26*3 + 24*6 + 12*10 = 342
+minSum({9,2,8,7,5,4,0,6}) ==> return (74)
+Explanation:
+The minimum sum obtained from summing each two integers product ,  9*0 + 8*2 +7*4 +6*5 = 74
 */
+function minSum(arr) {
+  // your code here
+  const newArr = arr.sort((a, b) => a - b);
+  const middle = newArr.length / 2
+  let result = 0;
+
+  for (let i = 0; i < middle; i++) {
+    let multiplication = newArr[i] * newArr[newArr.length - 1 - i];
+    result += multiplication   
+  }
+
+  return result;
+}
+console.log(minSum([5,4,2,3])); //22
+console.log(minSum([12,6,10,26,3,24])); //342
+console.log(minSum([9,2,8,7,5,4,0,6])); //74
 
 // https://www.codewars.com/kata/540de1f0716ab384b4000828/train/javascript
 /*
+Unpacking Arguments
 
+You must create a function, spread, that takes a function and a list of arguments to be applied to that function. 
+You must make this function return the result of calling the given function/lambda with the given arguments.
+
+eg:
+
+spread(someFunction, [1, true, "Foo", "bar"] ) 
+// is the same as...
+someFunction(1, true, "Foo", "bar")
 */
+function spread(func, args) {
+  return func(...args)
+  
+}
+
+console.log(spread(function(x, y) { return x + y; }, [1, 2]));
 
 // https://www.codewars.com/kata/580751a40b5a777a200000a1/train/javascript
 /*
+vowelOne
+Write a function that takes a string and outputs a strings of 1's and 0's where vowels become 1's and non-vowels become 0's.
+
+All non-vowels including non alpha characters (spaces,commas etc.) should be included.
+
+Examples:
+
+vowelOne( "abceios" ) // "1001110"
+
+vowelOne( "aeiou, abc" ) // "1111100100"
 
 */
+
+function vowelOne(s){
+  const vowels = 'aeiou';
+  let newStr = []
+
+  for (let i = 0; i < s.length; i++) {
+    if (vowels.includes(s[i].toLowerCase())) {
+      newStr.push(1)
+    } else {
+      newStr.push(0)
+    }
+    
+  }
+  return newStr.join('')
+  
+}
+
+console.log(vowelOne('vowelOne')); //01010101
+console.log(vowelOne('123, arou')); //000001011
+
+
+function nicknameGenerator(name){
+  const vowels = 'aeiou';
+    if (name.length < 4) {
+        return "Error: Name too short";
+    }
+    if (vowels.includes(name[2].toLowerCase())) {
+        return name.slice(0, 4); // первые 4 буквы
+    } else {
+        return name.slice(0, 3); // первые 3 буквы
+    }
+
+}
 
 // https://www.codewars.com/kata/5f709c8fb0d88300292a7a9d/train/javascript
 /*
+Who is the killer?
+Some people have been killed!
+You have managed to narrow the suspects down to just a few. Luckily, you know every person who those suspects have seen on the day of the murders.
+
+Task.
+Given a dictionary with all the names of the suspects and everyone that they have seen on that day which may look like this:
+
+{'James': ['Jacob', 'Bill', 'Lucas'],
+ 'Johnny': ['David', 'Kyle', 'Lucas'],
+ 'Peter': ['Lucy', 'Kyle']}
+and also a list of the names of the dead people:
+
+['Lucas', 'Bill']
+return the name of the one killer, in our case 'James' because he is the only person that saw both 'Lucas' and 'Bill'
 
 */
+const suspectInfo = {'James': ['Jacob', 'Bill', 'Lucas'],
+ 'Johnny': ['David', 'Kyle', 'Lucas'],
+ 'Peter': ['Lucy', 'Kyle']};
+
+ const dead = ['Lucas', 'Bill'];
+
+function killer(suspectInfo, dead) {
+  for (let suspect in suspectInfo) {
+    const seen = suspectInfo[suspect];
+
+    const sawAllDead = dead.every((victim) => seen.includes(victim));
+
+    if (sawAllDead) {
+      return suspect;
+    }
+  }
+}
+
+console.log(killer(suspectInfo, dead));
+
 
 // https://www.codewars.com/kata/569d488d61b812a0f7000015/train/javascript
+/*
+Data Reverse
+A stream of data is received and needs to be reversed.
+
+Each segment is 8 bits long, meaning the order of these segments needs to be reversed, for example:
+
+11111111  00000000  00001111  10101010
+ (byte1)   (byte2)   (byte3)   (byte4)
+should become:
+
+10101010  00001111  00000000  11111111
+ (byte4)   (byte3)   (byte2)   (byte1)
+The total number of bits will always be a multiple of 8.
+
+The data is given in an array as such:
+
+[1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,0]
+Note: In the C and NASM languages you are given the third parameter which is the number of segment blocks.
+*/
+function dataReverse(data) {
+  const result = [];
+  const chunkSize = 8;
+
+  // Разделяем массив на блоки по 8 элементов
+  for (let i = 0; i < data.length; i += chunkSize) {
+    result.push(data.slice(i, i + chunkSize));
+  }
+
+  // Разворачиваем порядок блоков
+  return result.reverse().flat();
+}
 
 
 
