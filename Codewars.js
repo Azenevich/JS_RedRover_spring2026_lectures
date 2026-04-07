@@ -242,6 +242,298 @@ find_missing([1, 2, 2, 3], [1, 2, 3]) => 2
 find_missing([6, 1, 3, 6, 8, 2], [3, 6, 6, 1, 2]) => 8
 The first array will always have at least one element.
 */
+function findMissing(arr1, arr2) {
+  // Your solution here
+    let arr11 = arr1.sort();
+    let arr22 = arr2.sort();
+    let num = 0;
+
+    for (let i = 0; i < arr11.length; i++) {
+        if (arr11[i] !== arr22[i]) {
+            num = arr11[i];
+            arr11.splice(i);
+        }         
+    }
+
+
+  return num
+}
+
+console.log(findMissing([1, 2, 3], [1, 3])); // 2
+
+//https://www.codewars.com/kata/586e4c61aa0428f04e000069/train/javascript
+/*
+Get decimal part of the given number
+
+Write a function that returns only the decimal part of the given number.
+
+You only have to handle valid numbers, not Infinity, NaN, or similar. Always return a positive decimal part.
+
+Examples
+getDecimal(2.4)  === 0.4
+getDecimal(-0.2) === 0.2
+*/
+
+function getDecimal(n){
+    let numberStr = Math.abs(n % 1);
+
+    // return numberStr
+  return +numberStr.toFixed(10)
+}
+
+console.log(getDecimal(5.6)); //0.6
+console.log(getDecimal(-5.6)); //0.6
+
+
+//https://www.codewars.com/kata/5aa1bcda373c2eb596000112/train/javascript
+/* 
+Maximum Triplet Sum (Array Series #7)
+Task
+Given an array/list [] of n integers , find maximum triplet sum in the array Without duplications .
+
+Notes :
+Array/list size is at least 3 .
+Array/list numbers could be a mixture of positives , negatives and zeros .
+Repetition of numbers in the array/list could occur , So (duplications are not included when summing).
+
+Input >> Output Examples
+1- maxTriSum ({3,2,6,8,2,3}) ==> return (17)
+Explanation:
+As the triplet that maximize the sum {6,8,3} in order , their sum is (17)
+
+Note : duplications are not included when summing , (i.e) the numbers added only once .
+
+2- maxTriSum ({2,1,8,0,6,4,8,6,2,4}) ==> return (18)
+Explanation:
+As the triplet that maximize the sum {8, 6, 4} in order , their sum is (18) ,
+
+Note : duplications are not included when summing , (i.e) the numbers added only once .
+
+3- maxTriSum ({-7,12,-7,29,-5,0,-7,0,0,29}) ==> return (41)
+Explanation:
+As the triplet that maximize the sum {12 , 29 , 0} in order , their sum is (41) ,
+
+Note : duplications are not included when summing , (i.e) the numbers added only once .
+
+*/
+function maxTriSum(numbers){
+  //your code here
+  let num =  [...new Set(numbers.sort((a, b) => a - b))]
+  let result = num.at(-1) + num.at(-2) + num.at(-3) 
+  return result
+}
+
+console.log(maxTriSum([3,2,6,8,2,3])); // 17
+console.log(maxTriSum([2,9,13,10,5,2,9,5])); // 32
+console.log(maxTriSum([2,1,8,0,6,4,8,6,2,4])); // 18
+console.log(maxTriSum([-3,-27,-4,-2,-27,-2])); // 9
+console.log(maxTriSum([-14,-12,-7,-42,-809,-14,-12])); // 33
+console.log(maxTriSum([-13,-50,57,13,67,-13,57,108,67])); // 232
+
+
+//https://www.codewars.com/kata/5a2cb4bff28b820c33000082/train/javascript
+/*
+Whose bicycle?
+
+I am the father of three wonderful sons. before the beginning of the school year, I promised them that 
+I would buy a bicycle for someone who would bring the best marks at the end of the school year. it's time to keep promises 
+and I count on you.
+You have 3 input objects(school diaries) with school subjects and marks (1-10). For example:
+
+{
+  'algebra': 6,
+  'history': 8,
+  'physics': 9,
+  'geography': 2,
+  'chemistry': 9
+}
+Return please :
+
+'I need to buy a bicycle for my first son.' // the sum of the marks is the highest  in the first diary.
+'I need to buy a bicycle for my second son.' // the sum of the marks is the highest in the second diary.
+'I need to buy a bicycle for my third son.' //  the sum of the marks is the highest in the third diary.
+If two or three sons have the same highest marks, you need to choose the younger one. Use the ageTable 
+object which is preloaded:
+
+ageTable = {
+            'firstSonAge': 14,
+            'secondSonAge': 9,
+            'thirdSonAge': 8
+           }
+*/
+
+function whoseBicycle(diary1, diary2, diary3) {
+  // good luck
+let ageTable = {
+            'firstSonAge': 14,
+            'secondSonAge': 9,
+            'thirdSonAge': 8
+           }
+
+  let firstSunScore = Object.values(diary1).reduce((acc, num) => acc + num);;
+  let secondSunScore = Object.values(diary2).reduce((acc, num) => acc + num);
+  let thirdSunScore = Object.values(diary3).reduce((acc, num) => acc + num);
+
+  const sons = [
+    { name: 'first', sum: firstSunScore, age: ageTable.firstSonAge },
+    { name: 'second', sum: secondSunScore, age: ageTable.secondSonAge },
+    { name: 'third', sum: thirdSunScore, age: ageTable.thirdSonAge }
+  ];
+
+  sons.sort((a, b) => {
+    if (b.sum !== a.sum) return b.sum - a.sum;
+    return a.age - b.age;
+  });
+
+  return `I need to buy a bicycle for my ${sons[0].name} son.`;
+}
+
+console.log(whoseBicycle(
+      {
+        'algebra': 6,
+        'history': 7,
+        'physics': 8,
+        'geography': 9,
+        'chemistry': 10
+      },
+      {
+        'algebra': 8,
+        'history': 7,
+        'physics': 8,
+        'geography': 9,
+        'chemistry': 10
+      },
+      {
+        'algebra': 6,
+        'history': 5,
+        'physics': 5,
+        'geography': 9,
+        'chemistry': 10
+      }
+    )) // I need to buy a bicycle for my second son.
+
+console.log(whoseBicycle(
+      {
+        'algebra': 6,
+        'history': 7,
+        'physics': 8,
+        'geography': 9,
+        'chemistry': 10
+      },
+      {
+        'algebra': 6,
+        'history': 7,
+        'physics': 8,
+        'geography': 9,
+        'chemistry': 10
+      },
+      {
+        'algebra': 6,
+        'history': 7,
+        'physics': 8,
+        'geography': 9,
+        'chemistry': 10
+      }
+    )) // I need to buy a bicycle for my third son.
+
+
+// https://www.codewars.com/kata/593b1909e68ff627c9000186/train/javascript
+/*
+Nickname Generator
+
+Write a function, nicknameGenerator that takes a string name as an argument and returns the first 3 or 4 letters as a nickname.
+
+If the 3rd letter is a consonant, return the first 3 letters.
+
+nickname("Robert") //=> "Rob"
+nickname("Kimberly") //=> "Kim"
+nickname("Samantha") //=> "Sam"
+If the 3rd letter is a vowel, return the first 4 letters.
+
+nickname("Jeannie") //=> "Jean"
+nickname("Douglas") //=> "Doug"
+nickname("Gregory") //=> "Greg"
+If the string is less than 4 characters, return "Error: Name too short".
+
+Notes:
+
+Vowels are "aeiou", so discount the letter "y".
+Input will always be a string.
+Input will always have the first letter capitalised and the rest lowercase (e.g. Sam).
+The input can be modified
+*/
+function nicknameGenerator(name){
+  const vowels = 'aeiou';
+    if (name.length < 4) {
+        return "Error: Name too short";
+    }
+    if (vowels.includes(name[2].toLowerCase())) {
+        return name.slice(0, 4); // первые 4 буквы
+    } else {
+        return name.slice(0, 3); // первые 3 буквы
+    }
+
+}
+console.log(nicknameGenerator('Robert'));
+console.log(nicknameGenerator('Kimberly'));
+console.log(nicknameGenerator('Samantha'));
+console.log(nicknameGenerator('Jeannie'));
+console.log(nicknameGenerator('Douglas'));
+console.log(nicknameGenerator('Gregory'));
+
+
+// https://www.codewars.com/kata/580755730b5a77650500010c/train/javascript
+/*
+Odd-Even String Sort
+Given a string s, your task is to return another string such that even-indexed 
+and odd-indexed characters of s are grouped and the groups are space-separated. 
+Even-indexed group comes as first, followed by a space, and then by the odd-indexed 
+part.
+
+Examples
+input:    "CodeWars" => "CdWr oeas"
+           ||||||||      |||| ||||
+indices:   01234567      0246 1357
+Even indices 0, 2, 4, 6, so we have "CdWr" as the first group.
+Odd indices are 1, 3, 5, 7, so the second group is "oeas".
+And the final string to return is "Cdwr oeas".
+
+Notes
+Tested strings are at least 8 characters long.
+
+*/
+
+// https://www.codewars.com/kata/534d0a229345375d520006a0/train/javascript
+/*
+
+*/
+
+// https://www.codewars.com/kata/5b047875de4c7f9af800011b/train/javascript
+/*
+
+*/
+
+// https://www.codewars.com/kata/5a523566b3bfa84c2e00010b/train/javascript
+/*
+
+*/
+
+// https://www.codewars.com/kata/540de1f0716ab384b4000828/train/javascript
+/*
+
+*/
+
+// https://www.codewars.com/kata/580751a40b5a777a200000a1/train/javascript
+/*
+
+*/
+
+// https://www.codewars.com/kata/5f709c8fb0d88300292a7a9d/train/javascript
+/*
+
+*/
+
+// https://www.codewars.com/kata/569d488d61b812a0f7000015/train/javascript
 
 
 
